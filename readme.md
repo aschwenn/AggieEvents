@@ -15,6 +15,7 @@
 ### Software
 * Download NPM (Node Package Manager)
 * `npm install` - this installs all of the packages used in our project; any time a new package is added by one of us, everyone else will have to run `npm install` to ensure that all packages are up to date
+* `cd AggieEvents`
 * `npm start` - this will open a development server on your local machine to allow you to view the app
   * You will need an emulator to view the application
   * The iOS emulator is only available on macOS
