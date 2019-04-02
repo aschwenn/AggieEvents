@@ -19,3 +19,6 @@
 * `npm start` - this will open a development server on your local machine to allow you to view the app
   * You will need an emulator to view the application
   * The iOS emulator is only available on macOS
+
+### React Native
+* "Getting started" - https://www.youtube.com/watch?v=6ZnfsJ6mM5c
