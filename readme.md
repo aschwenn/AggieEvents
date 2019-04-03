@@ -22,3 +22,13 @@
 
 ### React Native
 * "Getting started" - https://www.youtube.com/watch?v=6ZnfsJ6mM5c
+* React Native - JavaScript framework that creates a true native iOS or Android app
+  * https://facebook.github.io/react-native/docs/getting-started
+* React Native Elements - Library that provides basic UI app elements
+  * https://react-native-training.github.io/react-native-elements/docs/getting_started.html
+  
+### Testing
+* Download the "Expo Client" app to your phone from the App Store
+* Run `npm start` to open a development server on your laptop
+* Scan the QR code that appears in your browser page to open the app in the Expo Client
+* If the default doesn't work, try to change the connection format and rescan (LAN to Tunnel)
