@@ -9,6 +9,7 @@ import {
 import { WebBrowser, LinearGradient } from 'expo';
 import { Header } from 'react-native-elements';
 import Colors from '../constants/Colors';
+import { SearchBar } from 'react-native-elements';
 
 export default class EventsScreen extends React.Component {
   static navigationOptions = {
@@ -16,7 +17,17 @@ export default class EventsScreen extends React.Component {
     header: null
   };
 
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
   render() {
+    const { search } = this.state;
+
     return (
       <View style={{ flex: 1 }}>
         <View style={{ backgroundColor: 'white', flex: 1 }} />
@@ -44,6 +55,18 @@ export default class EventsScreen extends React.Component {
           />
           <ScrollView>
             
+            <SearchBar
+              placeholder='Search for your event...'
+              onChangeText={this.updateSearch}
+              value={search}
+              lightTheme
+              round
+              containerStyle={{
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                borderColor: 'transparent',
+              }}
+            />
+
           </ScrollView>
         </LinearGradient>
       </View>
