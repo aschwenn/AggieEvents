@@ -39,15 +39,17 @@ export default class HomeScreen extends React.Component {
     )
   };
 
-  myEvents =[
+  myEvents = [
     {
       name: 'Breakaway',
       subtitle: 'Tuesday night in Reed Arena',
       icon: 'people',
+      location: 'Reed Arena',
+      host: 'Breakaway Host'
     },
     {
       name: 'Football Game',
-      subtitle: 'Gig \'Em',
+      subtitle: 'BTHO t.u.', // need to make sure to esscape quotes on backend
       icon: 'art-track',
     }
     // more events here
