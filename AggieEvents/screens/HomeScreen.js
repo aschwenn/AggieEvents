@@ -5,24 +5,50 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
 } from 'react-native';
 import { WebBrowser, LinearGradient } from 'expo';
-import { Header } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Card, Divider, ListItem } from 'react-native-elements'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: 'Aggie Events',
+    headerTitleStyle: {
+      color: '#000',
+      fontWeight: 'bold',
+      fontSize: 20,
+    },
+    headerStyle: {
+      backgroundColor: Colors.tabBar,
+    },
+    headerRight: (
+      <Button
+        icon={
+          <Icon
+            name='settings'
+            color={Colors.iconGray}
+          />
+        }
+        buttonStyle={{
+          backgroundColor: 'transparent',
+          paddingRight: 14,
+        }}
+        //onPress={ }
+      />
+    )
   };
 
   myEvents =[
     {
-      name: 'Event 1',
+      name: 'Breakaway',
+      subtitle: 'Tuesday night in Reed Arena',
+      icon: 'people',
     },
     {
-      name: 'Event 2',
+      name: 'Football Game',
+      subtitle: 'Gig \'Em',
+      icon: 'art-track',
     }
     // more events here
   ];
@@ -41,22 +67,6 @@ export default class HomeScreen extends React.Component {
             top: 0,
             bottom: 0,
           }}>
-          <Header
-            /* Title and header bar */
-            //leftComponent={{ icon: 'menu', color: '#fff' }}
-            centerComponent={{
-              text: 'Aggie Events',
-              style: {
-                color: '#000',
-                fontWeight: 'bold',
-                fontSize: 20,
-              },
-            }}
-            rightComponent={{ icon: 'settings', color: 'rgba(96,100,109, 1)' }}
-            containerStyle={{
-              backgroundColor: '#fbfbfb',
-            }}
-          />
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             
             <View style={styles.myFeed}>
@@ -64,18 +74,25 @@ export default class HomeScreen extends React.Component {
                 My Upcoming Events
               </Text>
 
-              <Card>
+              <View>
                 {
-                  this.myEvents.map((u, i) => {
-                    return (
-                      <View key={i} style={styles.contentContainer}>
-                        <Text style={styles.event}>{u.name}</Text>
-                      </View>
-                    );
-                  })
+                  // Contains list of events from user's subscription
+                  this.myEvents.map((l, i) => (
+                    <ListItem
+                      key={i}
+                      //leftAvatar={{ source: { uri: l.avatar_url } }}
+                      leftIcon={{ name: l.icon }}
+                      title={l.name}
+                      titleStyle={styles.eventTitle}
+                      subtitle={l.subtitle}
+                      subtitleStyle={styles.eventSubTitle}
+                      style={styles.event}
+                      chevron
+                    />
+                  ))
                 }
-              </Card>
-            </View>
+              </View>
+            </View>            
 
           </ScrollView>
         </LinearGradient>
@@ -113,12 +130,21 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 25,
     fontWeight: "bold",
+    padding: '6%',
+  },
+  eventsCard: {
+    backgroundColor: 'transparent',
   },
   event: {
-    padding: '3%',
-    borderBottomColor: '#000',
-    borderBottomWidth: 2,
+    padding: '2%',
   },
+  eventTitle: {
+    fontSize: 18,
+    color: Colors.almostBlack,
+  },
+  eventSubTitle: {
+    color: Colors.lightGray,
+  }, 
   homeScreenFilename: {
     marginVertical: 7,
   },

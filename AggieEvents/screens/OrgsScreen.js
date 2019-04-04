@@ -7,13 +7,36 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser, LinearGradient } from 'expo';
-import { Header } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import { Tile } from 'react-native-elements';
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
-    header: null
+    title: 'Aggie Events',
+    headerTitleStyle: {
+      color: '#000',
+      fontWeight: 'bold',
+      fontSize: 20,
+    },
+    headerStyle: {
+      backgroundColor: Colors.tabBar,
+    },
+    headerRight: (
+      <Button
+        icon={
+          <Icon
+            name='settings'
+            color={Colors.iconGray}
+          />
+        }
+        buttonStyle={{
+          backgroundColor: 'transparent',
+          paddingRight: 14,
+        }}
+        //onPress={ }
+      />
+    )
   };
 
   render() {
@@ -30,22 +53,6 @@ export default class OrgsScreen extends React.Component {
             top: 0,
             bottom: 0,
           }}>
-          <Header
-            /* Title and header bar */
-            //leftComponent={{ icon: 'menu', color: '#fff' }}
-            centerComponent={{
-              text: 'Aggie Events',
-              style: {
-                color: '#000',
-                fontWeight: 'bold',
-                fontSize: 20,
-              },
-            }}
-            rightComponent={{ icon: 'settings', color: 'rgba(96,100,109, 1)' }}
-            containerStyle={{
-              backgroundColor: '#fbfbfb',
-            }}
-          />
           <ScrollView>
             <Tile
               title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem"
