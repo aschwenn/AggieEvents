@@ -9,6 +9,7 @@ import {
 import { WebBrowser, LinearGradient } from 'expo';
 import { Header } from 'react-native-elements';
 import Colors from '../constants/Colors';
+import { Tile } from 'react-native-elements';
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
@@ -46,8 +47,13 @@ export default class OrgsScreen extends React.Component {
             }}
           />
           <ScrollView>
-            
+            <Tile
+              title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem"
+              featured
+              caption="Some Caption Text"
+            />
           </ScrollView>
+
         </LinearGradient>
       </View>
     );
