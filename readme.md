@@ -11,7 +11,8 @@
   * `git push`
   * If the previous line doesn't work, try git push origin master
 * Verify that your commit has successfully been pushed to GitHub
-
+  * git pull origin master  
+  
 ### Software
 * Download NPM (Node Package Manager)
 * `npm install` - this installs all of the packages used in our project; any time a new package is added by one of us, everyone else will have to run `npm install` to ensure that all packages are up to date
