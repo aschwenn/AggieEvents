@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import EventsScreen from '../screens/EventsScreen';
 import OrgsScreen from '../screens/OrgsScreen';
+import Colors from '../constants/Colors';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -13,6 +14,12 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
+  tabBarOptions: {
+    activeTintColor: Colors.background2,
+    labelStyle: {
+      fontSize: 12,
+    }
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -31,6 +38,12 @@ const EventsStack = createStackNavigator({
 
 EventsStack.navigationOptions = {
   tabBarLabel: 'Events',
+  tabBarOptions: {
+    activeTintColor: Colors.background2,
+    labelStyle: {
+      fontSize: 12,
+    }
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -45,6 +58,12 @@ const OrgsStack = createStackNavigator({
 
 OrgsStack.navigationOptions = {
   tabBarLabel: 'Organizations',
+  tabBarOptions: {
+    activeTintColor: Colors.background2,
+    labelStyle: {
+      fontSize: 12,
+    }
+  },
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}

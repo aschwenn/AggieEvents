@@ -5,15 +5,27 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from 'react-native';
 import { WebBrowser, LinearGradient } from 'expo';
 import { Header } from 'react-native-elements';
 import Colors from '../constants/Colors';
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  myEvents =[
+    {
+      name: 'Event 1',
+    },
+    {
+      name: 'Event 2',
+    }
+    // more events here
+  ];
 
   render() {
     return (
@@ -46,9 +58,25 @@ export default class HomeScreen extends React.Component {
             }}
           />
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-            <View style={styles.getStartedContainer}>
-              <Text style={styles.getStartedText}>Team Steve Park 2</Text>
+            
+            <View style={styles.myFeed}>
+              <Text style={styles.feedTitle}>
+                My Upcoming Events
+              </Text>
+
+              <Card>
+                {
+                  this.myEvents.map((u, i) => {
+                    return (
+                      <View key={i} style={styles.contentContainer}>
+                        <Text style={styles.event}>{u.name}</Text>
+                      </View>
+                    );
+                  })
+                }
+              </Card>
             </View>
+
           </ScrollView>
         </LinearGradient>
       </View>
@@ -73,11 +101,23 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   contentContainer: {
-    paddingTop: 80,
+    //paddingTop: 80,
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
+  myFeed: {
+    // Container for user's events feed
+    paddingTop: '12%', // Use percentages instead of ints for scalability
+    paddingBottom: '12%',
+  },
+  feedTitle: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,
+    fontWeight: "bold",
+  },
+  event: {
+    padding: '3%',
+    borderBottomColor: '#000',
+    borderBottomWidth: 2,
   },
   homeScreenFilename: {
     marginVertical: 7,

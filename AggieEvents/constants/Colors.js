@@ -1,4 +1,4 @@
-const tintColor = '#2f95dc';
+//const tintColor = '#2f95dc';
 const background1 = '#ff416c';
 const background2 = '#ff4b2b';
 
@@ -7,7 +7,7 @@ export default {
   background1,
   background2,
   tabIconDefault: '#ccc',
-  tabIconSelected: background1,
+  tabIconSelected: background2,
   tabBar: '#fefefe',
   errorBackground: 'red',
   errorText: '#fff',

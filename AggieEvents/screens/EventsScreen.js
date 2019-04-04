@@ -60,7 +60,7 @@ export default class EventsScreen extends React.Component {
           <ScrollView>
             
             <SearchBar
-              placeholder='Search for your event...'
+              placeholder='Search campus events...'
               onChangeText={this.updateSearch}
               value={search}
               lightTheme
