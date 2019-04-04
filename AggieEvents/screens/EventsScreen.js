@@ -63,9 +63,11 @@ export default class EventsScreen extends React.Component {
             top: 0,
             bottom: 0,
           }}>
-          <ScrollView>
-            
-            <SearchBar
+
+
+
+          <View>
+            <SearchBar    //doesnt do anything yet
               placeholder='Search campus events...'
               onChangeText={this.updateSearch}
               value={search}
@@ -76,6 +78,9 @@ export default class EventsScreen extends React.Component {
                 borderColor: 'transparent',
               }}
             />
+          </View>
+
+          <ScrollView>
 
           </ScrollView>
         </LinearGradient>

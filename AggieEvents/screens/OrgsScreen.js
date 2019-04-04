@@ -7,9 +7,9 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser, LinearGradient } from 'expo';
-import { Button, Icon } from 'react-native-elements';
+
 import Colors from '../constants/Colors';
-import { Tile } from 'react-native-elements';
+import { Tile, SearchBar, Button, Icon } from 'react-native-elements';
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
@@ -53,12 +53,21 @@ export default class OrgsScreen extends React.Component {
             top: 0,
             bottom: 0,
           }}>
-          <ScrollView>
-            <Tile
-              title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore exercitationem"
-              featured
-              caption="Some Caption Text"
+
+          <View>
+            <SearchBar    //doesnt do anything yet
+              placeholder='Search student organizations...'
+              lightTheme
+              round
+              containerStyle={{
+                backgroundColor: 'rgba(255,255,255,0.2)',
+                borderColor: 'transparent',
+              }}
             />
+          </View>
+
+          <ScrollView>
+
           </ScrollView>
 
         </LinearGradient>
