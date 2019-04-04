@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { WebBrowser, LinearGradient } from 'expo';
 import { Header } from 'react-native-elements';
+import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -20,7 +21,7 @@ export default class HomeScreen extends React.Component {
         <View style={{ backgroundColor: 'white', flex: 1 }} />
         <LinearGradient
           /* Background gradient on each page of the app */
-          colors={['#ff416c', '#ff4b2b']}
+          colors={[Colors.background1, Colors.background2]}
           style={{
             position: 'absolute',
             left: 0,
@@ -33,7 +34,7 @@ export default class HomeScreen extends React.Component {
             //leftComponent={{ icon: 'menu', color: '#fff' }}
             centerComponent={{
               text: 'Aggie Events',
-              style: { color: '#000'},
+              style: { color: '#000', fontWeight: 'bold'},
             }}
             rightComponent={{ icon: 'settings', color: 'rgba(96,100,109, 1)' }}
             containerStyle={{
@@ -42,7 +43,7 @@ export default class HomeScreen extends React.Component {
           />
           <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
             <View style={styles.getStartedContainer}>
-              <Text style={styles.getStartedText}>Team Steve Park</Text>
+              <Text style={styles.getStartedText}>Team Steve Park 2</Text>
             </View>
           </ScrollView>
         </LinearGradient>
