@@ -7,9 +7,11 @@ import HomeScreen from '../screens/HomeScreen';
 import EventsScreen from '../screens/EventsScreen';
 import OrgsScreen from '../screens/OrgsScreen';
 import Colors from '../constants/Colors';
+import EventDetails from '../screens/EventDetails';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  Event: EventDetails
 });
 
 HomeStack.navigationOptions = {

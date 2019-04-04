@@ -34,7 +34,9 @@ export default class HomeScreen extends React.Component {
           backgroundColor: 'transparent',
           paddingRight: 14,
         }}
-        //onPress={ }
+        onPress={() => {
+          console.log('Settings clicked!');
+        }}
       />
     )
   };
@@ -42,20 +44,27 @@ export default class HomeScreen extends React.Component {
   myEvents = [
     {
       name: 'Breakaway',
-      subtitle: 'Tuesday night in Reed Arena',
       icon: 'people',
       location: 'Reed Arena',
       host: 'Breakaway Host'
     },
     {
       name: 'Football Game',
-      subtitle: 'BTHO t.u.', // need to make sure to esscape quotes on backend
+      host: 'BTHO t.u.', // need to make sure to esscape quotes on backend
       icon: 'art-track',
+      location: 'Kyle Field'
+    },
+    {
+      name: 'Microsoft Interview Prep',
+      host: 'Texas A&M Computing Society (TACS)',
+      icon: 'book',
+      location: 'HRBB 113'
     }
     // more events here
   ];
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={{ flex: 1 }}>
         <View style={{ backgroundColor: 'white', flex: 1 }} />
@@ -86,10 +95,18 @@ export default class HomeScreen extends React.Component {
                       leftIcon={{ name: l.icon }}
                       title={l.name}
                       titleStyle={styles.eventTitle}
-                      subtitle={l.subtitle}
+                      subtitle={l.host}
                       subtitleStyle={styles.eventSubTitle}
                       style={styles.event}
                       chevron
+                      onPress={() => {
+                        navigate('Event', {
+                          eventName: l.name,
+                          icon: l.icon,
+                          host: l.host
+                        });
+                      }}
+                      //badge={{value:1}}
                     />
                   ))
                 }

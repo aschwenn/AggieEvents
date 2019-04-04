@@ -8,6 +8,7 @@ export default {
   background2,
   lightGray: '#808080',
   almostBlack: '#1a1a1a',
+  almostWhite: '#d9d9d9',
   iconGray: 'rgba(96,100,109, 1)',
   tabIconDefault: '#ccc',
   tabIconSelected: background2,
