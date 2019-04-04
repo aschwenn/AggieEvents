@@ -46,7 +46,11 @@ export default class EventsScreen extends React.Component {
             //leftComponent={{ icon: 'menu', color: '#fff' }}
             centerComponent={{
               text: 'Aggie Events',
-              style: { color: '#000'},
+              style: {
+                color: '#000',
+                fontWeight: 'bold',
+                fontSize: 20,
+              },
             }}
             rightComponent={{ icon: 'settings', color: 'rgba(96,100,109, 1)' }}
             containerStyle={{

@@ -3,7 +3,7 @@ const background1 = '#ff416c';
 const background2 = '#ff4b2b';
 
 export default {
-  tintColor,
+  //tintColor,
   background1,
   background2,
   tabIconDefault: '#ccc',
