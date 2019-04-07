@@ -234,7 +234,9 @@ export default class EventDetails extends React.Component {
         const startDayofWeek = navigation.getParam('startDayofWeek', 'missing attribute');
         const endDayofWeek = navigation.getParam('endDayofWeek', 'missing attribute');
         const description = navigation.getParam('description', 'missing attribute');
-        const attributes = navigation.getParam('attributes','missing attribute');
+        const attributes = navigation.getParam('attributes', 'missing attribute');
+        const going = navigation.getParam('going', 'missing attribute');
+        const interested = navigation.getParam('interested', 'missing attribute');
 
         return (
             <View style={styles.container}>
@@ -325,6 +327,17 @@ export default class EventDetails extends React.Component {
                                 buttonStyle={this.state.notGoing.style}
                                 onPress={this.notGoing}
                             />
+                        </View>
+                        <View // Attendees
+                            style={{
+                                flexDirection: 'row',
+                                paddingTop: '2%',
+                                paddingBottom: '2%',
+                            }}>
+                            <Text style={styles.attendees}>{going}</Text>
+                            <Text style={styles.subtitle2}> going, </Text>
+                            <Text style={styles.attendees}>{interested}</Text>
+                            <Text style={styles.subtitle2}> interested</Text>
                         </View>
                         <View /* Description */>
                             <Text style={styles.subtitle}>About</Text>
@@ -447,6 +460,13 @@ const styles = StyleSheet.create({
     rsvpButtonTitle: {
         color: 'white',
         paddingLeft: 4,
+        paddingBottom: '2%',
+    },
+    attendees: {
+        color: 'white',
+        fontSize: 20,
+        textAlign: 'left',
+        paddingTop: '0%',
         paddingBottom: '2%',
     },
 });
