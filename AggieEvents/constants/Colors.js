@@ -19,4 +19,7 @@ export default {
   warningText: '#666804',
   noticeBackground: background1,
   noticeText: '#fff',
+  goingButton: '#00b359',
+  maybeButton: '#ff9933',
+  notGoingButton: '#808080',
 };
