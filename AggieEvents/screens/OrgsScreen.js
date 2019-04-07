@@ -6,10 +6,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import { WebBrowser, LinearGradient } from 'expo';
-
+import { LinearGradient } from 'expo';
 import Colors from '../constants/Colors';
 import { List, ListItem, Tile, SearchBar, Button, Icon } from 'react-native-elements';
+import { DummyOrgs } from '../data/dummyData.json';
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
@@ -47,35 +47,9 @@ export default class OrgsScreen extends React.Component {
     this.setState({ search });
   };
 
-  orgsList = [
-    {
-      name: 'TAMU Computing Society',
-      discription: 'We like computers!',
-      icon: 'computer'
-    },
-    {
-      name: 'Paintball Club',
-      discription: 'Gig \'em with PAINTBALL',
-      icon: 'format-paint'
-
-    },
-    {
-      name: 'Alpha Beta Sigma',
-      discription: 'Social Fraternity',
-      icon: 'arrow-forward'
-    },
-    {
-      name: 'Sigma Gamma Chi',
-      discription: 'Service Fraternity',
-      icon: 'arrow-back'
-    }
-    ];
-
-
-
   render() {
     const { search } = this.state;
-    const {navigate} = this.props.navigation;
+    const { navigate } = this.props.navigation;
 
     return (
       <View style={{ flex: 1 }}>
@@ -110,13 +84,13 @@ export default class OrgsScreen extends React.Component {
 
             <View>
               {
-                this.orgsList.map((l, i) => (
+                DummyOrgs.map((l, i) => (
                 <ListItem
                   key={i}
                   leftIcon={{name: l.icon}}
                   title={l.name}
                   titleStyle={styles.eventTitle}
-                  subtitle={l.discription}
+                  subtitle={l.description}
                   subtitleStyle={styles.eventSubTitle}
                   style={styles.event}
                   chevron
@@ -124,7 +98,7 @@ export default class OrgsScreen extends React.Component {
                     navigate('Org', {
                       name: l.name,
                       icon: l.icon,
-                      discription: l.discription,
+                      description: l.description,
                     });
                   }}
 

@@ -7,12 +7,15 @@ import {
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo';
-import { Button, Icon } from 'react-native-elements';
+import { Button, Icon, ListItem } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import { SearchBar } from 'react-native-elements';
+import { DummyEvents } from '../data/dummyData.json';
 
 class SearchResults extends React.Component {
   render() {
+    const navigate = this.props.navigate;
+
     // Show search results only if user is currently searching, else hide
     if (this.props.state.search == '') {
       return null;
@@ -31,16 +34,58 @@ class SearchResults extends React.Component {
 
 class Discover extends React.Component {
   render() {
+    const navigate = this.props.navigate;
+
     // Show Discover element only if user is not currently searching
     if (this.props.state.search != ''){
       return null;
     }
     else {
       return (
-        <View style={styles.discover}>
-          <Text style={styles.discoverText}>
-            Happening Soon
-          </Text>
+        <View>
+          <View style={styles.discover}>
+            <Text style={styles.discoverText}>
+              Happening Soon
+            </Text>
+          </View>
+
+          <View>
+          {
+            // Contains list of events from user's subscription
+            DummyEvents.map((l, i) => (
+              <ListItem
+                key={i}
+                //leftAvatar={{ source: { uri: l.avatar_url } }}
+                leftIcon={{ name: l.icon }}
+                title={l.name}
+                titleStyle={styles.eventTitle}
+                subtitle={l.host}
+                subtitleStyle={styles.eventSubTitle}
+                style={styles.event}
+                chevron
+                onPress={() => {
+                  navigate('Event', {
+                    eventName: l.name,
+                    icon: l.icon,
+                    host: l.host,
+                    location: l.location,
+                    startDate: l.startDate,
+                    endDate: l.endDate,
+                    startDayofWeek: l.startDayofWeek,
+                    endDayofWeek: l.endDayofWeek,
+                    startTime: l.startTime,
+                    endTime: l.endTime,
+                    description: l.description,
+                    going: l.going,
+                    interested: l.interested,
+                    attributes: l.attributes
+                  });
+                }}
+                //badge={{value:null}}
+              />
+            ))
+          }
+          </View>
         </View>
       )
     }
@@ -87,6 +132,7 @@ export default class EventsScreen extends React.Component {
 
   render() {
     const { search } = this.state;
+    const { navigate } = this.props.navigation;
 
     return (
       <View style={{ flex: 1 }}>
@@ -117,8 +163,8 @@ export default class EventsScreen extends React.Component {
           </View>
 
           <ScrollView>
-              <SearchResults state={this.state}></SearchResults>
-              <Discover state={this.state}></Discover>
+              <SearchResults state={this.state} navigate={navigate}></SearchResults>
+              <Discover state={this.state} navigate={navigate}></Discover>
           </ScrollView>
         </LinearGradient>
       </View>
@@ -136,7 +182,10 @@ const styles = StyleSheet.create({
     color: Colors.almostBlack,
   },
   discover: {
-    padding: '10%',
+    paddingTop: '10%',
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    paddingBottom: '5%',
   },
   discoverText: {
     textAlign: 'center',
@@ -144,4 +193,14 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
   },
+  event: {
+    padding: '2%',
+  },
+  eventTitle: {
+    fontSize: 18,
+    color: Colors.almostBlack,
+  },
+  eventSubTitle: {
+    color: Colors.lightGray,
+  }, 
 });

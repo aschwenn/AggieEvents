@@ -10,6 +10,7 @@ import { LinearGradient } from 'expo';
 import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import { ListItem } from 'react-native-elements'
+import { DummyEvents } from '../data/dummyData.json';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -44,49 +45,9 @@ export default class HomeScreen extends React.Component {
     };
   };
 
-  myEvents = [
-    {
-      name: 'Maysfest',
-      icon: 'people', // type of icon to display in card
-      location: 'Wehner',
-      host: 'Business Student Council',
-      startDate: '04-10-2019', // MM-DD-YYYY format
-      startDayofWeek: 2, // 6 is saturday, 0 is monday, etc.
-      endDate: '04-10-2019',
-      endDayofWeek: 2,
-      startTime: '1000', // Military time format
-      endTime: '1400',
-      description: "Howdy folks! Maysfest is back and more Texan than ever!  Come on out for a big ole' heaping portion of food, games, and more! We can't predict the weather, but we can predict that fun will be had - the Maysfest way! So grab some friends and head over to Mays because you don't wanna miss the BEST STATE EVER!!! Whoops, we mean THE BEST DAY EVER!!!",
-      going: 53,
-      interested: 12,
-      attributes: [
-        'Kid-friendly',
-        'Free food'
-      ]
-    },
-    {
-      name: 'TEDxTAMU',
-      host: 'MSC Aggie Leaders of Tomorrow',
-      icon: 'art-track',
-      location: 'Rudder Forum',
-      startDate: '04-07-2019',
-      startDayofWeek: 0,
-      endDate: '04-07-2019',
-      endDayofWeek: 0,
-      startTime: '0800',
-      endTime: '1900',
-      description: "TEDxTAMU is a shared vision which promotes positive communication and the spreading of ideas. TEDxTAMU 2019 is collaboration where different backgrounds blend together to create something beautiful through a variety of different speakers, performers, and art. The theme for this upcoming conference is Gradient, which aims to cultivate this ideal.",
-      going: 27,
-      interested: 31,
-      attributes: [
-        'On campus'
-      ]
-    },
-    // more events here
-  ];
-
   render() {
     const {navigate} = this.props.navigation;
+
     return (
       <View style={{ flex: 1 }}>
         <View style={{ backgroundColor: 'white', flex: 1 }} />
@@ -110,10 +71,9 @@ export default class HomeScreen extends React.Component {
               <View>
                 {
                   // Contains list of events from user's subscription
-                  this.myEvents.map((l, i) => (
+                  DummyEvents.map((l, i) => (
                     <ListItem
                       key={i}
-                      //leftAvatar={{ source: { uri: l.avatar_url } }}
                       leftIcon={{ name: l.icon }}
                       title={l.name}
                       titleStyle={styles.eventTitle}
