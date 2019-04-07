@@ -43,31 +43,33 @@ export default class HomeScreen extends React.Component {
 
   myEvents = [
     {
-      name: 'Breakaway',
+      name: 'Maysfest',
       icon: 'people', // type of icon to display in card
-      location: 'Reed Arena',
-      host: 'Breakaway Ministries',
-      startDate: '04-06-2019', // MM-DD-YYYY format
-      startDayofWeek: 6, // 6 is saturday, 0 is monday, etc.
-      endDate: '04-06-2019',
-      endDayofWeek: 6,
-      startTime: '2130', // Military time format
-      endTime: '2330',
+      location: 'Wehner',
+      host: 'Business Student Council',
+      startDate: '04-10-2019', // MM-DD-YYYY format
+      startDayofWeek: 2, // 6 is saturday, 0 is monday, etc.
+      endDate: '04-10-2019',
+      endDayofWeek: 2,
+      startTime: '1000', // Military time format
+      endTime: '1400',
       description: "Howdy folks! Maysfest is back and more Texan than ever!  Come on out for a big ole' heaping portion of food, games, and more! We can't predict the weather, but we can predict that fun will be had - the Maysfest way! So grab some friends and head over to Mays because you don't wanna miss the BEST STATE EVER!!! Whoops, we mean THE BEST DAY EVER!!!",
 
     },
     {
-      name: 'Football Game',
-      host: 'BTHO t.u.', // need to make sure to escape quotes on backend
+      name: 'TEDxTAMU',
+      host: 'MSC Aggie Leaders of Tomorrow',
       icon: 'art-track',
-      location: 'Kyle Field'
+      location: 'Rudder Forum',
+      startDate: '04-07-2019',
+      startDayofWeek: 0,
+      endDate: '04-07-2019',
+      endDayofWeek: 0,
+      startTime: '0800',
+      endTime: '1900',
+      description: "TEDxTAMU is a shared vision which promotes positive communication and the spreading of ideas. TEDxTAMU 2019 is collaboration where different backgrounds blend together to create something beautiful through a variety of different speakers, performers, and art. The theme for this upcoming conference is Gradient, which aims to cultivate this ideal.",
+
     },
-    {
-      name: 'Microsoft Interview Prep',
-      host: 'Texas A&M Computing Society (TACS)',
-      icon: 'book',
-      location: 'HRBB 113'
-    }
     // more events here
   ];
 

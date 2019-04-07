@@ -17,11 +17,13 @@ class DateTime extends React.Component {
                 // AM
                 if (time.substring(2,4) == '00'){
                     // On the hour
-                    return time.substring(0,2) + ' AM';
+                    time2 = parseInt(time.substring(0,2),10);
+                    return time2.toString() + ' AM';
                 }
                 else {
                     // Includes minutes
-                    return time.substring(0,2) + ':' + time.substring(2,4) + ' AM';
+                    time2 = parseInt(time.substring(0,2),10);
+                    return time2.toString() + ':' + time.substring(2,4) + ' AM';
                 }
             }
             else {
