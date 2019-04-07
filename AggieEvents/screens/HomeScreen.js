@@ -54,7 +54,10 @@ export default class HomeScreen extends React.Component {
       startTime: '1000', // Military time format
       endTime: '1400',
       description: "Howdy folks! Maysfest is back and more Texan than ever!  Come on out for a big ole' heaping portion of food, games, and more! We can't predict the weather, but we can predict that fun will be had - the Maysfest way! So grab some friends and head over to Mays because you don't wanna miss the BEST STATE EVER!!! Whoops, we mean THE BEST DAY EVER!!!",
-
+      attributes: [
+        'Kid-friendly',
+        'Free food'
+      ]
     },
     {
       name: 'TEDxTAMU',
@@ -68,7 +71,9 @@ export default class HomeScreen extends React.Component {
       startTime: '0800',
       endTime: '1900',
       description: "TEDxTAMU is a shared vision which promotes positive communication and the spreading of ideas. TEDxTAMU 2019 is collaboration where different backgrounds blend together to create something beautiful through a variety of different speakers, performers, and art. The theme for this upcoming conference is Gradient, which aims to cultivate this ideal.",
-
+      attributes: [
+        'On campus'
+      ]
     },
     // more events here
   ];
@@ -122,6 +127,7 @@ export default class HomeScreen extends React.Component {
                           startTime: l.startTime,
                           endTime: l.endTime,
                           description: l.description,
+                          attributes: l.attributes
                         });
                       }}
                       //badge={{value:1}}

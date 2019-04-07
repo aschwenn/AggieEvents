@@ -154,7 +154,6 @@ class DateTime extends React.Component {
 export default class EventDetails extends React.Component {
     static navigationOptions = {
         title: 'Event Details',
-
     };
 
     state = {
@@ -235,6 +234,7 @@ export default class EventDetails extends React.Component {
         const startDayofWeek = navigation.getParam('startDayofWeek', 'missing attribute');
         const endDayofWeek = navigation.getParam('endDayofWeek', 'missing attribute');
         const description = navigation.getParam('description', 'missing attribute');
+        const attributes = navigation.getParam('attributes','missing attribute');
 
         return (
             <View style={styles.container}>
@@ -249,12 +249,16 @@ export default class EventDetails extends React.Component {
                         bottom: 0,
                     }}>
                     <ScrollView style={styles.eventStyle}>
-                        <Text style={styles.title}>{eventName}</Text>
-                        <View style={{flexDirection: 'row'}}>
+                        <Text /* Event Name */
+                            style={styles.title}>
+                            {eventName}
+                        </Text>
+                        <View /* Host organization */
+                            style={{flexDirection: 'row'}}>
                             <Text style={styles.subtitle}>Hosted by </Text>
                             <Text style={styles.host}>{host}</Text>
                         </View>
-                        <DateTime
+                        <DateTime /* Date and time of event */
                             startDate={startDate}
                             endDate={endDate}
                             startDayofWeek={startDayofWeek}
@@ -262,7 +266,8 @@ export default class EventDetails extends React.Component {
                             startTime={startTime}
                             endTime={endTime}
                         ></DateTime>
-                        <View style={{flexDirection: 'row'}}>
+                        <View /* Location */
+                            style={{flexDirection: 'row'}}>
                             <Icon style={styles.locationIcon}
                                 name='location-on'
                                 color='white'
@@ -270,7 +275,7 @@ export default class EventDetails extends React.Component {
                             ></Icon>
                             <Text style={styles.locationText}> {location}</Text>
                         </View>
-                        <View 
+                        <View /* RSVP Buttons */
                             style={{
                                 flexDirection: 'row',
                                 paddingTop: '2%',
@@ -286,7 +291,7 @@ export default class EventDetails extends React.Component {
                                 }
                                 title='Going'
                                 type={this.state.going.button}
-                                titleStyle={{color:'white', paddingLeft:4}}
+                                titleStyle={styles.rsvpButtonTitle}
                                 buttonStyle={this.state.going.style}
                                 containerStyle={{paddingRight: '3%'}}
                                 onPress={this.going}
@@ -301,7 +306,7 @@ export default class EventDetails extends React.Component {
                                 }
                                 title='Maybe'
                                 type={this.state.maybe.button}
-                                titleStyle={{color:'white', paddingLeft:4}}
+                                titleStyle={styles.rsvpButtonTitle}
                                 buttonStyle={this.state.maybe.style}
                                 containerStyle={{paddingRight: '3%'}}
                                 onPress={this.maybe}
@@ -316,16 +321,30 @@ export default class EventDetails extends React.Component {
                                 }
                                 title='Not Going'
                                 type={this.state.notGoing.button}
-                                titleStyle={{color:'white', paddingLeft:4}}
+                                titleStyle={styles.rsvpButtonTitle}
                                 buttonStyle={this.state.notGoing.style}
                                 onPress={this.notGoing}
                             />
                         </View>
-                        <View>
+                        <View /* Description */>
                             <Text style={styles.subtitle}>About</Text>
                             <Text style={styles.description}>
                                 {description}
                             </Text>
+                            <View>
+                                {
+                                    attributes.map((a,i) => (
+                                        <View style={styles.attribute} key={i}>
+                                            <Icon style={styles.attributeIcon}
+                                                name='check'
+                                                color='white'
+                                                size={20}
+                                            ></Icon>
+                                        <Text style={styles.attributeText}> {a}</Text>
+                                       </View>
+                                    ))
+                                }
+                            </View>
                         </View>
                     </ScrollView>
                 </LinearGradient>
@@ -368,8 +387,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         paddingTop: '2%',
         paddingBottom: '2%',
-        //flexWrap: 'wrap',
-        //paddingRight: 10
+        flexWrap: 'wrap',
     },
     locationIcon: {
         textAlign: 'left',
@@ -408,5 +426,27 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         paddingTop: '2%',
         paddingBottom: '5%',
-    }
+    },
+    attribute: {
+        paddingTop: '1%',
+        paddingBottom: '1%',
+        flexDirection: 'row'
+    },
+    attributeIcon: {
+        textAlign: 'left',
+        paddingTop: '2%',
+        paddingBottom: '2%',
+    },
+    attributeText: {
+        textAlign: 'left',
+        paddingTop: '0.5%',
+        paddingBottom: '2%',
+        color: 'white',
+        fontSize: 16
+    },
+    rsvpButtonTitle: {
+        color: 'white',
+        paddingLeft: 4,
+        paddingBottom: '2%',
+    },
 });
