@@ -44,13 +44,21 @@ export default class HomeScreen extends React.Component {
   myEvents = [
     {
       name: 'Breakaway',
-      icon: 'people',
+      icon: 'people', // type of icon to display in card
       location: 'Reed Arena',
-      host: 'Breakaway Host'
+      host: 'Breakaway Ministries',
+      startDate: '04-06-2019', // MM-DD-YYYY format
+      startDayofWeek: 6, // 6 is saturday, 0 is monday, etc.
+      endDate: '04-06-2019',
+      endDayofWeek: 6,
+      startTime: '2130', // Military time format
+      endTime: '2330',
+      description: "Howdy folks! Maysfest is back and more Texan than ever!  Come on out for a big ole' heaping portion of food, games, and more! We can't predict the weather, but we can predict that fun will be had - the Maysfest way! So grab some friends and head over to Mays because you don't wanna miss the BEST STATE EVER!!! Whoops, we mean THE BEST DAY EVER!!!",
+
     },
     {
       name: 'Football Game',
-      host: 'BTHO t.u.', // need to make sure to esscape quotes on backend
+      host: 'BTHO t.u.', // need to make sure to escape quotes on backend
       icon: 'art-track',
       location: 'Kyle Field'
     },
@@ -103,7 +111,15 @@ export default class HomeScreen extends React.Component {
                         navigate('Event', {
                           eventName: l.name,
                           icon: l.icon,
-                          host: l.host
+                          host: l.host,
+                          location: l.location,
+                          startDate: l.startDate,
+                          endDate: l.endDate,
+                          startDayofWeek: l.startDayofWeek,
+                          endDayofWeek: l.endDayofWeek,
+                          startTime: l.startTime,
+                          endTime: l.endTime,
+                          description: l.description,
                         });
                       }}
                       //badge={{value:1}}
