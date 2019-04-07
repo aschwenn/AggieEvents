@@ -25,6 +25,7 @@ export default class HomeScreen extends React.Component {
         backgroundColor: Colors.tabBar,
       },
       headerBackTitle: null, // don't want length title, just use back button
+      tintColor: 'black',
       headerRight: (
         <Button
           icon={
