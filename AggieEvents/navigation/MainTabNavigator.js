@@ -8,6 +8,7 @@ import EventsScreen from '../screens/EventsScreen';
 import OrgsScreen from '../screens/OrgsScreen';
 import Colors from '../constants/Colors';
 import EventDetails from '../screens/EventDetails';
+import OrgDetails from '../screens/OrgDetails';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -57,6 +58,7 @@ EventsStack.navigationOptions = {
 
 const OrgsStack = createStackNavigator({
   Orgs: OrgsScreen,
+  Org: OrgDetails
 });
 
 OrgsStack.navigationOptions = {

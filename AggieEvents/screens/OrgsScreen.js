@@ -75,6 +75,7 @@ export default class OrgsScreen extends React.Component {
 
   render() {
     const { search } = this.state;
+    const {navigate} = this.props.navigation;
 
     return (
       <View style={{ flex: 1 }}>
@@ -118,7 +119,13 @@ export default class OrgsScreen extends React.Component {
                   subtitleStyle={styles.eventSubTitle}
                   style={styles.event}
                   chevron
-
+                  onPress={() => {
+                    navigate('Org', {
+                      name: l.name,
+                      icon: l.icon,
+                      discription: l.discription,
+                    });
+                  }}
 
                 />
               ))
