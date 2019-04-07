@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-console.log('Hello, world!\n');
+console.log('Hello, world!');
 /* Print statements are made with console.log();
  * these will show up in your terminal window. */
 
@@ -62,6 +62,7 @@ app.get('/', (req, res) => {
    */
 
    console.log('GET /\t\t\t' + 'User accessed our server!');
+   console.log(new Date() + '\n'); // Print the date and time accessed
 
    /* Our response goes here. If we know a web browser will be
     * accessing this route, we can send back HTML */
@@ -92,11 +93,20 @@ app.post('/postData/', (req, res) => {
    }
 
    console.log('POST /postData/\t\t' + 'Data request for ' + req.body.name);
-
+   console.log(new Date() + '\n');
+   
    // Here is where we would make the database query
 
    res.send('Data for ' + req.body.name + ' received.');
 });
+app.get('/kill/', (req, res) => {
+  /* Used to test the 'forever' library, this route kills the node server */
+
+  console.log('\nServer killed...');
+  console.log(new Date() + '\n');
+
+  process.exit();
+})
 
 /* Start the server on a port on our machine */
 var port = 8080;
@@ -112,4 +122,13 @@ app.listen(port, () => {
  * server will restart). You can download it with
  * 'npm install --save-dev nodemon'. This library is a wrapper for the
  * 'node' command, so you can use it in the same way: 'nodemon server'.
+ * 
+ * The Forever library can also be used to prevent the server from crashing.
+ * This library restarts the server when it detects a crash. The following
+ * command: 'forever -o logfile.txt server.js' keeps the server running and
+ * copies all data from STDOUT to the logfile so that we can check later
+ * for what may have caused crashes. The 'forever list' command shows any
+ * forever processes, and the 'forever stopall' command kills any processes
+ * it's running (useful if you have one running in the background and try to
+ * open the server again on the same port--you will experience an error).
  */

@@ -1,0 +1,28 @@
+Hello, world!
+
+Server started on port 8080
+
+
+----- Usage log -----
+GET /			User accessed our server!
+Sun Apr 07 2019 16:18:35 GMT-0500 (Central Daylight Time)
+
+GET /			User accessed our server!
+Sun Apr 07 2019 16:18:44 GMT-0500 (Central Daylight Time)
+
+
+Server killed...
+Sun Apr 07 2019 16:18:51 GMT-0500 (Central Daylight Time)
+
+Hello, world!
+
+Server started on port 8080
+
+
+----- Usage log -----
+GET /			User accessed our server!
+Sun Apr 07 2019 16:22:12 GMT-0500 (Central Daylight Time)
+
+GET /			User accessed our server!
+Sun Apr 07 2019 16:22:59 GMT-0500 (Central Daylight Time)
+
