@@ -171,6 +171,10 @@ export default class EventDetails extends React.Component {
         notGoing: {
             button: 'outline',
             style: {borderColor:'white',}
+        },
+        rsvped: {
+            going: this.props.navigation.getParam('going',-1),
+            interested: this.props.navigation.getParam('interested',-1),
         }
     }
 
@@ -187,6 +191,10 @@ export default class EventDetails extends React.Component {
             notGoing: {
                 button: 'outline',
                 style: {borderColor:'white',}
+            },
+            rsvped: {
+                going: this.props.navigation.getParam('going',-1) + 1,
+                interested: this.props.navigation.getParam('interested',-1),
             }
         })
     }
@@ -204,6 +212,10 @@ export default class EventDetails extends React.Component {
             notGoing: {
                 button: 'outline',
                 style: {borderColor:'white',}
+            },
+            rsvped: {
+                going: this.props.navigation.getParam('going',-1),
+                interested: this.props.navigation.getParam('interested',-1) + 1,
             }
         })
     }
@@ -221,6 +233,10 @@ export default class EventDetails extends React.Component {
             notGoing: {
                 button: 'solid',
                 style: {borderColor:'white',backgroundColor:Colors.notGoingButton}
+            },
+            rsvped: {
+                going: this.props.navigation.getParam('going',-1),
+                interested: this.props.navigation.getParam('interested',-1),
             }
         })
     }
@@ -238,8 +254,6 @@ export default class EventDetails extends React.Component {
         const endDayofWeek = navigation.getParam('endDayofWeek', 'missing attribute');
         const description = navigation.getParam('description', 'missing attribute');
         const attributes = navigation.getParam('attributes', 'missing attribute');
-        const going = navigation.getParam('going', 'missing attribute');
-        const interested = navigation.getParam('interested', 'missing attribute');
 
         return (
             <View style={styles.container}>
@@ -343,9 +357,9 @@ export default class EventDetails extends React.Component {
                                 paddingTop: '2%',
                                 paddingBottom: '2%',
                             }}>
-                            <Text style={styles.attendees}>{going}</Text>
+                            <Text style={styles.attendees}>{this.state.rsvped.going}</Text>
                             <Text style={styles.subtitle2}> going, </Text>
-                            <Text style={styles.attendees}>{interested}</Text>
+                            <Text style={styles.attendees}>{this.state.rsvped.interested}</Text>
                             <Text style={styles.subtitle2}> interested</Text>
                         </View>
                         {/*<View style={{paddingTop:'2%',paddingBottom:'2%'}}>
