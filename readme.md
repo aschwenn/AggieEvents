@@ -4,3 +4,5 @@ For information on how to set up the environment, check `config.md`.
 ### Frontend To-do (React-Native)
 * EventDetails
   * Text wrapping on Host name
+* HomeScreen
+  * RSVP icon next to event (if applicable)
