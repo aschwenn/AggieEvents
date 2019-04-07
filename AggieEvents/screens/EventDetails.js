@@ -161,16 +161,19 @@ export default class EventDetails extends React.Component {
 
     state = {
         going: {
-            button: 'outline',
-            style: {borderColor:'white',}
+            button: (this.props.navigation.getParam('RSVP', 'null')=='going')? 'solid' : 'outline',
+            style: (this.props.navigation.getParam('RSVP', 'null')=='going')?
+                {borderColor:'white',backgroundColor:Colors.goingButton} : {borderColor:'white',}
         },
         maybe: {
-            button: 'outline',
-            style: {borderColor:'white',}
+            button: (this.props.navigation.getParam('RSVP', 'null')=='maybe')? 'solid' : 'outline',
+            style: (this.props.navigation.getParam('RSVP', 'null')=='maybe')?
+            {borderColor:'white',backgroundColor:Colors.goingButton} : {borderColor:'white',}
         },
         notGoing: {
-            button: 'outline',
-            style: {borderColor:'white',}
+            button: (this.props.navigation.getParam('RSVP', 'null')=='notGoing')? 'solid' : 'outline',
+            style: (this.props.navigation.getParam('RSVP', 'null')=='notGoing')?
+            {borderColor:'white',backgroundColor:Colors.goingButton} : {borderColor:'white',}
         },
         rsvped: {
             going: this.props.navigation.getParam('going',-1),
@@ -193,8 +196,10 @@ export default class EventDetails extends React.Component {
                 style: {borderColor:'white',}
             },
             rsvped: {
-                going: this.props.navigation.getParam('going',-1) + 1,
-                interested: this.props.navigation.getParam('interested',-1),
+                going: (this.props.navigation.getParam('RSVP', 'null')=='going')?
+                    this.props.navigation.getParam('going',-1) : this.props.navigation.getParam('going',-1) + 1,
+                interested: (this.props.navigation.getParam('RSVP', 'null')=='maybe')?
+                    this.props.navigation.getParam('interested',-1) - 1 : this.props.navigation.getParam('interested',-1),
             }
         })
     }
@@ -214,8 +219,10 @@ export default class EventDetails extends React.Component {
                 style: {borderColor:'white',}
             },
             rsvped: {
-                going: this.props.navigation.getParam('going',-1),
-                interested: this.props.navigation.getParam('interested',-1) + 1,
+                going: (this.props.navigation.getParam('RSVP', 'null')=='going')?
+                    this.props.navigation.getParam('going',-1) - 1 : this.props.navigation.getParam('going',-1),
+                interested: (this.props.navigation.getParam('RSVP', 'null')=='maybe')?
+                    this.props.navigation.getParam('interested',-1) : this.props.navigation.getParam('interested',-1) + 1,
             }
         })
     }
@@ -235,8 +242,10 @@ export default class EventDetails extends React.Component {
                 style: {borderColor:'white',backgroundColor:Colors.notGoingButton}
             },
             rsvped: {
-                going: this.props.navigation.getParam('going',-1),
-                interested: this.props.navigation.getParam('interested',-1),
+                going: (this.props.navigation.getParam('RSVP', 'null')=='going')?
+                    this.props.navigation.getParam('going',-1) - 1 : this.props.navigation.getParam('going',-1),
+                interested: (this.props.navigation.getParam('RSVP', 'null')=='maybe')?
+                    this.props.navigation.getParam('interested',-1) - 1 : this.props.navigation.getParam('interested',-1),
             }
         })
     }
@@ -254,6 +263,7 @@ export default class EventDetails extends React.Component {
         const endDayofWeek = navigation.getParam('endDayofWeek', 'missing attribute');
         const description = navigation.getParam('description', 'missing attribute');
         const attributes = navigation.getParam('attributes', 'missing attribute');
+        //const RSVP = navigation.getParam('RSVP', 'null');
 
         return (
             <View style={styles.container}>

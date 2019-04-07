@@ -97,7 +97,8 @@ export default class HomeScreen extends React.Component {
                           description: l.description,
                           going: l.going,
                           interested: l.interested,
-                          attributes: l.attributes
+                          attributes: l.attributes,
+                          RSVP: l.RSVP
                         });
                       }}
                       //badge={{value:null}}

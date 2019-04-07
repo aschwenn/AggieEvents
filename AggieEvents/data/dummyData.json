@@ -17,7 +17,8 @@
       "attributes": [
         "Kid-friendly",
         "Free food"
-      ]
+      ],
+      "RSVP": "going"
     },
     {
       "name": "TEDxTAMU",
@@ -35,7 +36,8 @@
       "interested": 31,
       "attributes": [
         "On campus"
-      ]
+      ],
+      "RSVP": "null"
     }
   ],
   "DummyOrgs": [
