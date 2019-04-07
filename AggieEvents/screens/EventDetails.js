@@ -6,8 +6,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import { WebBrowser, LinearGradient } from 'expo';
-import { Button, Icon } from 'react-native-elements';
+import { LinearGradient } from 'expo';
+import { Button, Icon, Divider } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
 class DateTime extends React.Component {
@@ -154,6 +154,9 @@ class DateTime extends React.Component {
 export default class EventDetails extends React.Component {
     static navigationOptions = {
         title: 'Event Details',
+        headerStyle: {
+            backgroundColor: Colors.tabBar,
+        },
     };
 
     state = {
@@ -256,9 +259,15 @@ export default class EventDetails extends React.Component {
                             {eventName}
                         </Text>
                         <View /* Host organization */
-                            style={{flexDirection: 'row'}}>
+                            style={{
+                                flexDirection: 'row', 
+                                //flexWrap: 'wrap',
+                            }}>
                             <Text style={styles.subtitle}>Hosted by </Text>
-                            <Text style={styles.host}>{host}</Text>
+                            <Text style={styles.host}
+                                numberOfLines={1}
+                                ellipsizeMode='tail'
+                            >{host}</Text>
                         </View>
                         <DateTime /* Date and time of event */
                             startDate={startDate}
@@ -339,6 +348,9 @@ export default class EventDetails extends React.Component {
                             <Text style={styles.attendees}>{interested}</Text>
                             <Text style={styles.subtitle2}> interested</Text>
                         </View>
+                        {/*<View style={{paddingTop:'2%',paddingBottom:'2%'}}>
+                            <Divider style={{backgroundColor:Colors.almostWhite}}></Divider>
+                        </View>*/}
                         <View /* Description */>
                             <Text style={styles.subtitle}>About</Text>
                             <Text style={styles.description}>
@@ -377,7 +389,8 @@ const styles = StyleSheet.create({
     },
     eventStyle: {
         // Container for user's events feed
-        padding: '7%'
+        padding: '7%',
+        flexWrap: 'wrap',
     },
     title: {
         textAlign: 'left',
@@ -400,7 +413,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         paddingTop: '2%',
         paddingBottom: '2%',
-        flexWrap: 'wrap',
+        flex: 1,
     },
     locationIcon: {
         textAlign: 'left',

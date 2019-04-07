@@ -102,6 +102,7 @@ export default class OrgsScreen extends React.Component {
                 backgroundColor: 'rgba(255,255,255,0.2)',
                 borderColor: 'transparent',
               }}
+              inputStyle={styles.searchInput}
             />
           </View>
 
@@ -143,6 +144,12 @@ export default class OrgsScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+  searchInput: {
+    color: Colors.almostBlack,
+  },
+
+
+  // Copied from HomeScreen.js
   container: {
     flex: 1,
     backgroundColor: 'transparent',

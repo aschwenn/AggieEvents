@@ -6,39 +6,42 @@ import {
   Text,
   View,
 } from 'react-native';
-import { WebBrowser, LinearGradient } from 'expo';
+import { LinearGradient } from 'expo';
 import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
-import { Card, Divider, ListItem } from 'react-native-elements'
+import { ListItem } from 'react-native-elements'
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Aggie Events',
-    headerTitleStyle: {
-      color: '#000',
-      fontWeight: 'bold',
-      fontSize: 20,
-    },
-    headerStyle: {
-      backgroundColor: Colors.tabBar,
-    },
-    headerRight: (
-      <Button
-        icon={
-          <Icon
-            name='settings'
-            color={Colors.iconGray}
-          />
-        }
-        buttonStyle={{
-          backgroundColor: 'transparent',
-          paddingRight: 14,
-        }}
-        onPress={() => {
-          console.log('Settings clicked!');
-        }}
-      />
-    )
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Aggie Events',
+      headerTitleStyle: {
+        color: '#000',
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
+      headerStyle: {
+        backgroundColor: Colors.tabBar,
+      },
+      headerBackTitle: null, // don't want length title, just use back button
+      headerRight: (
+        <Button
+          icon={
+            <Icon
+              name='settings'
+              color={Colors.iconGray}
+            />
+          }
+          buttonStyle={{
+            backgroundColor: 'transparent',
+            paddingRight: 14,
+          }}
+          onPress={() => {
+            navigation.navigate('Settings');
+          }}
+        />
+      )
+    };
   };
 
   myEvents = [
@@ -136,7 +139,7 @@ export default class HomeScreen extends React.Component {
                           attributes: l.attributes
                         });
                       }}
-                      //badge={{value:1}}
+                      //badge={{value:null}}
                     />
                   ))
                 }
@@ -148,16 +151,6 @@ export default class HomeScreen extends React.Component {
       </View>
     );
   }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/guides/development-mode');
-  };
-
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
-    );
-  };
 }
 
 const styles = StyleSheet.create({

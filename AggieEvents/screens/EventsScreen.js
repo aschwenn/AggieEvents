@@ -11,6 +11,42 @@ import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import { SearchBar } from 'react-native-elements';
 
+class SearchResults extends React.Component {
+  render() {
+    // Show search results only if user is currently searching, else hide
+    if (this.props.state.search == '') {
+      return null;
+    }
+    else {
+      return (
+        <View style={{paddingTop:30}}>
+          <Text style={{textAlign:'center',fontSize:25,color:'white'}}>
+            Backend should search for '{this.props.state.search}'
+          </Text>
+        </View>
+      )
+    }
+  }
+}
+
+class Discover extends React.Component {
+  render() {
+    // Show Discover element only if user is not currently searching
+    if (this.props.state.search != ''){
+      return null;
+    }
+    else {
+      return (
+        <View style={styles.discover}>
+          <Text style={styles.discoverText}>
+            Happening Soon
+          </Text>
+        </View>
+      )
+    }
+  }
+}
+
 export default class EventsScreen extends React.Component {
   static navigationOptions = {
     title: 'Aggie Events',
@@ -43,8 +79,10 @@ export default class EventsScreen extends React.Component {
     search: '',
   };
 
-  updateSearch = search => {
-    this.setState({ search });
+  updateSearch = (search) => {
+    this.setState({
+      search: search,
+    });
   };
 
   render() {
@@ -63,9 +101,6 @@ export default class EventsScreen extends React.Component {
             top: 0,
             bottom: 0,
           }}>
-
-
-
           <View>
             <SearchBar    //doesnt do anything yet
               placeholder='Search campus events...'
@@ -77,11 +112,13 @@ export default class EventsScreen extends React.Component {
                 backgroundColor: 'rgba(255,255,255,0.2)',
                 borderColor: 'transparent',
               }}
+              inputStyle={styles.searchInput}
             />
           </View>
 
           <ScrollView>
-
+              <SearchResults state={this.state}></SearchResults>
+              <Discover state={this.state}></Discover>
           </ScrollView>
         </LinearGradient>
       </View>
@@ -94,5 +131,17 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#fff',
+  },
+  searchInput: {
+    color: Colors.almostBlack,
+  },
+  discover: {
+    padding: '10%',
+  },
+  discoverText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,
+    fontWeight: "bold",
   },
 });
