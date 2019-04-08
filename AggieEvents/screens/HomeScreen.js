@@ -9,8 +9,9 @@ import {
 import { LinearGradient } from 'expo';
 import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
-import { ListItem } from 'react-native-elements'
-import { DummyEvents } from '../data/dummyData.json';
+import { DummyEvents, DummyOrgs } from '../data/dummyData.json';
+import EventList from '../components/EventList';
+import OrgList from '../components/OrgList';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -69,44 +70,23 @@ export default class HomeScreen extends React.Component {
                 My Upcoming Events
               </Text>
 
-              <View>
-                {
-                  // Contains list of events from user's subscription
-                  DummyEvents.map((l, i) => (
-                    <ListItem
-                      key={i}
-                      leftIcon={{ name: l.icon }}
-                      title={l.name}
-                      titleStyle={styles.eventTitle}
-                      subtitle={l.host}
-                      subtitleStyle={styles.eventSubTitle}
-                      style={styles.event}
-                      chevron
-                      onPress={() => {
-                        navigate('Event', {
-                          eventName: l.name,
-                          icon: l.icon,
-                          host: l.host,
-                          location: l.location,
-                          startDate: l.startDate,
-                          endDate: l.endDate,
-                          startDayofWeek: l.startDayofWeek,
-                          endDayofWeek: l.endDayofWeek,
-                          startTime: l.startTime,
-                          endTime: l.endTime,
-                          description: l.description,
-                          going: l.going,
-                          interested: l.interested,
-                          attributes: l.attributes,
-                          RSVP: l.RSVP
-                        });
-                      }}
-                      //badge={{value:null}}
-                    />
-                  ))
-                }
-              </View>
-            </View>            
+              <EventList
+                events={DummyEvents}
+                navigate={navigate}
+              ></EventList>
+            </View>
+
+            <View style={styles.container}>
+              <Text style={styles.feedTitle}>
+                Subscriptions
+              </Text>
+
+              <OrgList
+                orgs={DummyOrgs}
+                navigate={navigate}
+                show='subscribed'
+              ></OrgList>
+            </View>
 
           </ScrollView>
         </LinearGradient>
@@ -127,7 +107,7 @@ const styles = StyleSheet.create({
   myFeed: {
     // Container for user's events feed
     paddingTop: '12%', // Use percentages instead of ints for scalability
-    paddingBottom: '12%',
+    //paddingBottom: '12%',
   },
   feedTitle: {
     textAlign: 'center',
@@ -135,9 +115,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontWeight: "bold",
     padding: '6%',
-  },
-  eventsCard: {
-    backgroundColor: 'transparent',
   },
   event: {
     padding: '2%',

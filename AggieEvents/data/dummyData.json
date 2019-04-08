@@ -44,23 +44,26 @@
     {
       "name": "TAMU Computing Society",
       "description": "We like computers!",
-      "icon": "computer"
+      "icon": "computer",
+      "subscribed": true
     },
     {
       "name": "Paintball Club",
       "description": "Gig 'em with PAINTBALL",
-      "icon": "format-paint"
-
+      "icon": "format-paint",
+      "subscribed": false
     },
     {
       "name": "Alpha Beta Sigma",
       "description": "Social Fraternity",
-      "icon": "arrow-forward"
+      "icon": "arrow-forward",
+      "subscribed": true
     },
     {
       "name": "Sigma Gamma Chi",
       "description": "Service Fraternity",
-      "icon": "arrow-back"
+      "icon": "arrow-back",
+      "subscribed": false
     }
   ]
 }

@@ -13,6 +13,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Event: EventDetails,
+  Org: OrgDetails,
   Settings: SettingsScreen,
 });
 

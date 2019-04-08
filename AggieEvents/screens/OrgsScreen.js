@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import Colors from '../constants/Colors';
-import { List, ListItem, Tile, SearchBar, Button, Icon } from 'react-native-elements';
+import { ListItem, SearchBar, Button, Icon } from 'react-native-elements';
 import { DummyOrgs } from '../data/dummyData.json';
+import OrgList from '../components/OrgList';
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
@@ -83,31 +84,11 @@ export default class OrgsScreen extends React.Component {
 
           <ScrollView>
 
-            <View>
-              {
-                DummyOrgs.map((l, i) => (
-                <ListItem
-                  key={i}
-                  leftIcon={{name: l.icon}}
-                  title={l.name}
-                  titleStyle={styles.eventTitle}
-                  subtitle={l.description}
-                  subtitleStyle={styles.eventSubTitle}
-                  style={styles.event}
-                  chevron
-                  onPress={() => {
-                    navigate('Org', {
-                      name: l.name,
-                      icon: l.icon,
-                      description: l.description,
-                    });
-                  }}
-
-                />
-              ))
-              }
-
-            </View>
+            <OrgList
+              orgs={DummyOrgs}
+              navigate={navigate}
+              show='all' // options: all | subscribed
+            ></OrgList>
 
           </ScrollView>
 

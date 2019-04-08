@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { LinearGradient } from 'expo';
-import { Button, Icon, ListItem } from 'react-native-elements';
+import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import { SearchBar } from 'react-native-elements';
 import { DummyEvents } from '../data/dummyData.json';
+import EventList from '../components/EventList';
 
 class SearchResults extends React.Component {
   render() {
@@ -45,48 +45,14 @@ class Discover extends React.Component {
         <View>
           <View style={styles.discover}>
             <Text style={styles.discoverText}>
-              Happening Soon
+              Happening This Week
             </Text>
           </View>
 
-          <View>
-          {
-            // Contains list of events from user's subscription
-            DummyEvents.map((l, i) => (
-              <ListItem
-                key={i}
-                //leftAvatar={{ source: { uri: l.avatar_url } }}
-                leftIcon={{ name: l.icon }}
-                title={l.name}
-                titleStyle={styles.eventTitle}
-                subtitle={l.host}
-                subtitleStyle={styles.eventSubTitle}
-                style={styles.event}
-                chevron
-                onPress={() => {
-                  navigate('Event', {
-                    eventName: l.name,
-                    icon: l.icon,
-                    host: l.host,
-                    location: l.location,
-                    startDate: l.startDate,
-                    endDate: l.endDate,
-                    startDayofWeek: l.startDayofWeek,
-                    endDayofWeek: l.endDayofWeek,
-                    startTime: l.startTime,
-                    endTime: l.endTime,
-                    description: l.description,
-                    going: l.going,
-                    interested: l.interested,
-                    attributes: l.attributes,
-                    RSVP: l.RSVP,
-                  });
-                }}
-                //badge={{value:null}}
-              />
-            ))
-          }
-          </View>
+          <EventList
+            events={DummyEvents}
+            navigate={navigate}
+          ></EventList>
         </View>
       )
     }
