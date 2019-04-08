@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 25,
     fontWeight: "bold",
+    paddingBottom: '2%'
   },
   event: {
     padding: '2%',

@@ -168,12 +168,12 @@ export default class EventDetails extends React.Component {
         maybe: {
             button: (this.props.navigation.getParam('RSVP', 'null')=='maybe')? 'solid' : 'outline',
             style: (this.props.navigation.getParam('RSVP', 'null')=='maybe')?
-            {borderColor:'white',backgroundColor:Colors.goingButton} : {borderColor:'white',}
+            {borderColor:'white',backgroundColor:Colors.maybeButton} : {borderColor:'white',}
         },
         notGoing: {
             button: (this.props.navigation.getParam('RSVP', 'null')=='notGoing')? 'solid' : 'outline',
             style: (this.props.navigation.getParam('RSVP', 'null')=='notGoing')?
-            {borderColor:'white',backgroundColor:Colors.goingButton} : {borderColor:'white',}
+            {borderColor:'white',backgroundColor:Colors.notGoingButton} : {borderColor:'white',}
         },
         rsvped: {
             going: this.props.navigation.getParam('going',-1),

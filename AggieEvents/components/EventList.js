@@ -7,15 +7,37 @@ export default class EventList extends React.Component {
 
   render() {
     const navigate = this.props.navigate;
-    const events = this.props.events;
+    let events = this.props.events;
 
     if (!events) return (<View></View>);
+
+    // Add RSVP icons to list elements
+    let newEvents = [];
+    events.forEach((e, i) => {
+      if (e.RSVP == 'going'){
+        e.icon = 'check';
+        e.iconColor = Colors.goingButton;
+      }
+      else if (e.RSVP == 'maybe'){
+        e.icon = 'help-outline';
+        e.iconColor = Colors.maybeButton;
+      }
+      else if (e.RSVP == 'notGoing'){
+        e.icon = 'clear';
+        e.iconColor = Colors.notGoingButton2;
+      }
+      else {
+        e.iconColor = null;
+      }
+      newEvents.push(e);
+    });
+    events = newEvents;
 
     return (
       events.map((l, i) => (
         <ListItem
           key={i}
-          leftIcon={{ name: l.icon }}
+          leftIcon={{ name: l.icon, color: l.iconColor }}
           title={l.name}
           titleStyle={styles.eventTitle}
           subtitle={l.host}

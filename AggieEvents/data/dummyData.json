@@ -38,6 +38,44 @@
         "On campus"
       ],
       "RSVP": "null"
+    },
+    {
+      "name": "March Madness Final Watch Party",
+      "host": "Les Appelt Hall",
+      "icon": "book",
+      "location": "Appelt TV Lounge",
+      "startDate": "04-08-2019",
+      "startDayofWeek": 1,
+      "endDate": "04-08-2019",
+      "endDayofWeek": 1,
+      "startTime": "1945",
+      "endTime": "2200",
+      "description": "Open hall event to close the on going month long Appelt March Madness bracket tournament challenge",
+      "going": 8,
+      "interested": 4,
+      "attributes": [
+        "Free food"
+      ],
+      "RSVP": "maybe"
+    },
+    {
+      "name": "Puppies in the Plaza",
+      "host": "Eta Sigma Gamma",
+      "icon": "book",
+      "location": "Academic Plaza",
+      "startDate": "04-11-2019",
+      "startDayofWeek": 4,
+      "endDate": "04-12-2019",
+      "endDayofWeek": 5,
+      "startTime": "1100",
+      "endTime": "1400",
+      "description": "Spreading positive mental health messages, while incorporating Bryan Animal Center dogs as a healthy stress reliever. We will have popcorn with mental health resources for anyone who would like to take a bag and learn more.",
+      "going": 44,
+      "interested": 102,
+      "attributes": [
+        "Free food"
+      ],
+      "RSVP": "notGoing"
     }
   ],
   "DummyOrgs": [

@@ -76,7 +76,7 @@ export default class HomeScreen extends React.Component {
               ></EventList>
             </View>
 
-            <View style={styles.container}>
+            <View style={styles.subscriptions}>
               <Text style={styles.feedTitle}>
                 Subscriptions
               </Text>
@@ -106,8 +106,11 @@ const styles = StyleSheet.create({
   },
   myFeed: {
     // Container for user's events feed
-    paddingTop: '12%', // Use percentages instead of ints for scalability
+    paddingTop: '10%', // Use percentages instead of ints for scalability
     //paddingBottom: '12%',
+  },
+  subscriptions: {
+    paddingBottom: '12%'
   },
   feedTitle: {
     textAlign: 'center',
