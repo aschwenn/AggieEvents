@@ -22,6 +22,7 @@ export default class OrgsScreen extends React.Component {
     headerStyle: {
       backgroundColor: Colors.tabBar,
     },
+    headerBackTitle: null, // don't want length title, just use back button
     headerRight: (
       <Button
         icon={

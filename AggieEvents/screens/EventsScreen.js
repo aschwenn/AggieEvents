@@ -78,7 +78,8 @@ class Discover extends React.Component {
                     description: l.description,
                     going: l.going,
                     interested: l.interested,
-                    attributes: l.attributes
+                    attributes: l.attributes,
+                    RSVP: l.RSVP,
                   });
                 }}
                 //badge={{value:null}}
@@ -103,6 +104,7 @@ export default class EventsScreen extends React.Component {
     headerStyle: {
       backgroundColor: Colors.tabBar,
     },
+    headerBackTitle: null, // don't want length title, just use back button
     headerRight: (
       <Button
         icon={
