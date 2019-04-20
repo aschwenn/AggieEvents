@@ -12,6 +12,7 @@ import Colors from '../constants/Colors';
 import { DummyEvents, DummyOrgs } from '../data/dummyData.json';
 import EventList from '../components/EventList';
 import OrgList from '../components/OrgList';
+import Master from '../Master';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -50,6 +51,18 @@ export default class HomeScreen extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
 
+    upcomingEvents = [];
+    myOrgs = [];
+
+    if (Master.WireframeMode){
+      // Use local data
+      upcomingEvents = DummyEvents;
+      myOrgs = DummyOrgs;
+    }
+    else {
+      // Query database for data
+    }
+
     return (
       <View style={{ flex: 1 }}>
         <View style={{ backgroundColor: 'white', flex: 1 }} />
@@ -71,7 +84,7 @@ export default class HomeScreen extends React.Component {
               </Text>
 
               <EventList
-                events={DummyEvents}
+                events={upcomingEvents}
                 navigate={navigate}
               ></EventList>
             </View>
@@ -82,7 +95,7 @@ export default class HomeScreen extends React.Component {
               </Text>
 
               <OrgList
-                orgs={DummyOrgs}
+                orgs={myOrgs}
                 navigate={navigate}
                 show='subscribed'
               ></OrgList>

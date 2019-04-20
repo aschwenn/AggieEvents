@@ -11,6 +11,7 @@ import Colors from '../constants/Colors';
 import { SearchBar } from 'react-native-elements';
 import { DummyEvents } from '../data/dummyData.json';
 import EventList from '../components/EventList';
+import Master from '../Master';
 
 class SearchResults extends React.Component {
   render() {
@@ -36,6 +37,14 @@ class Discover extends React.Component {
   render() {
     const navigate = this.props.navigate;
 
+    discoverEvents = [];
+    if (Master.WireframeMode){
+      discoverEvents = DummyEvents;
+    }
+    else {
+      // Query the database
+    }
+
     // Show Discover element only if user is not currently searching
     if (this.props.state.search != ''){
       return null;
@@ -50,7 +59,7 @@ class Discover extends React.Component {
           </View>
 
           <EventList
-            events={DummyEvents}
+            events={discoverEvents}
             navigate={navigate}
           ></EventList>
         </View>

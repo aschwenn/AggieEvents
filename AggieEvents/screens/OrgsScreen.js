@@ -11,6 +11,7 @@ import Colors from '../constants/Colors';
 import { ListItem, SearchBar, Button, Icon } from 'react-native-elements';
 import { DummyOrgs } from '../data/dummyData.json';
 import OrgList from '../components/OrgList';
+import Master from '../Master';
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
@@ -53,6 +54,14 @@ export default class OrgsScreen extends React.Component {
     const { search } = this.state;
     const { navigate } = this.props.navigation;
 
+    discoverOrgs = [];
+    if (Master.WireframeMode){
+      discoverOrgs = DummyOrgs;
+    }
+    else {
+      // Query the database
+    }
+
     return (
       <View style={{ flex: 1 }}>
         <View style={{ backgroundColor: 'white', flex: 1 }} />
@@ -85,7 +94,7 @@ export default class OrgsScreen extends React.Component {
           <ScrollView>
 
             <OrgList
-              orgs={DummyOrgs}
+              orgs={discoverOrgs}
               navigate={navigate}
               show='all' // options: all | subscribed
             ></OrgList>
@@ -95,7 +104,7 @@ export default class OrgsScreen extends React.Component {
         </LinearGradient>
       </View>
     );
-    }
+  }
 }
 
 
