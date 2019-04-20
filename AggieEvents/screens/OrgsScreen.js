@@ -12,6 +12,65 @@ import { ListItem, SearchBar, Button, Icon } from 'react-native-elements';
 import { DummyOrgs } from '../data/dummyData.json';
 import OrgList from '../components/OrgList';
 import Master from '../Master';
+import Searchable from '../components/Searchable';
+
+class SearchResults extends React.Component {
+  render() {
+    const navigate = this.props.navigate;
+
+    // Show search results only if user is currently searching, else hide
+    if (this.props.state.search == '') {
+      return null;
+    }
+    else {
+      return (
+        <View>
+          <Searchable
+            navigate={navigate}
+            searchType='orgs'
+            query={this.props.state.search}
+          ></Searchable>
+        </View>
+      )
+    }
+  }
+}
+
+class Discover extends React.Component {
+  render() {
+    const navigate = this.props.navigate;
+
+    discoverOrgs = [];
+    if (Master.WireframeMode){
+      discoverOrgs = DummyOrgs;
+    }
+    else {
+      // Query the database
+    }
+
+    // Show Discover element only if user is not currently searching
+    if (this.props.state.search != ''){
+      return null;
+    }
+    else {
+      return (
+        <View>
+          <View style={styles.discover}>
+            <Text style={styles.discoverText}>
+              Discover Organizations
+            </Text>
+          </View>
+
+          <OrgList
+              orgs={discoverOrgs}
+              navigate={navigate}
+              show='all' // options: all | subscribed
+            ></OrgList>
+        </View>
+      )
+    }
+  }
+}
 
 export default class OrgsScreen extends React.Component {
   static navigationOptions = {
@@ -46,21 +105,15 @@ export default class OrgsScreen extends React.Component {
     search: '',
   };
 
-  updateSearch = search => {
-    this.setState({ search });
+  updateSearch = (search) => {
+    this.setState({
+      search: search,
+    });
   };
 
   render() {
     const { search } = this.state;
     const { navigate } = this.props.navigation;
-
-    discoverOrgs = [];
-    if (Master.WireframeMode){
-      discoverOrgs = DummyOrgs;
-    }
-    else {
-      // Query the database
-    }
 
     return (
       <View style={{ flex: 1 }}>
@@ -75,7 +128,6 @@ export default class OrgsScreen extends React.Component {
             top: 0,
             bottom: 0,
           }}>
-
           <View>
             <SearchBar    //doesnt do anything yet
               placeholder='Search student organizations...'
@@ -88,29 +140,36 @@ export default class OrgsScreen extends React.Component {
                 borderColor: 'transparent',
               }}
               inputStyle={styles.searchInput}
+              autoCorrect={false}
             />
           </View>
 
           <ScrollView>
-
-            <OrgList
-              orgs={discoverOrgs}
-              navigate={navigate}
-              show='all' // options: all | subscribed
-            ></OrgList>
-
+              <SearchResults state={this.state} navigate={navigate}></SearchResults>
+              <Discover state={this.state} navigate={navigate}></Discover>
           </ScrollView>
-
         </LinearGradient>
       </View>
     );
   }
 }
 
-
 const styles = StyleSheet.create({
   searchInput: {
     color: Colors.almostBlack,
+  },
+  discover: {
+    paddingTop: '10%',
+    paddingLeft: '10%',
+    paddingRight: '10%',
+    paddingBottom: '5%',
+  },
+  discoverText: {
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 25,
+    fontWeight: "bold",
+    paddingBottom: '2%'
   },
 
 

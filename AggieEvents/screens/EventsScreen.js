@@ -12,6 +12,7 @@ import { SearchBar } from 'react-native-elements';
 import { DummyEvents } from '../data/dummyData.json';
 import EventList from '../components/EventList';
 import Master from '../Master';
+import Searchable from '../components/Searchable';
 
 class SearchResults extends React.Component {
   render() {
@@ -23,10 +24,12 @@ class SearchResults extends React.Component {
     }
     else {
       return (
-        <View style={{paddingTop:30}}>
-          <Text style={{textAlign:'center',fontSize:25,color:'white'}}>
-            Backend should search for '{this.props.state.search}'
-          </Text>
+        <View>
+          <Searchable
+            navigate={navigate}
+            searchType='events'
+            query={this.props.state.search}
+          ></Searchable>
         </View>
       )
     }
@@ -136,6 +139,7 @@ export default class EventsScreen extends React.Component {
                 borderColor: 'transparent',
               }}
               inputStyle={styles.searchInput}
+              autoCorrect={false}
             />
           </View>
 
