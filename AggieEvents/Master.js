@@ -1,5 +1,6 @@
 /* Controls global settings appwide */
 
 export default {
-  WireframeMode: true
+  WireframeMode: true,
+  HideHeaders: true,
 }

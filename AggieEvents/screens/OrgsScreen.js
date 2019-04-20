@@ -73,33 +73,46 @@ class Discover extends React.Component {
 }
 
 export default class OrgsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Aggie Events',
-    headerTitleStyle: {
-      color: '#000',
-      fontWeight: 'bold',
-      fontSize: 20,
-    },
-    headerStyle: {
-      backgroundColor: Colors.tabBar,
-    },
-    headerBackTitle: null, // don't want length title, just use back button
-    headerRight: (
-      <Button
-        icon={
-          <Icon
-            name='settings'
-            color={Colors.iconGray}
+  static navigationOptions = ({navigation}) => {
+    if (Master.HideHeaders) {
+      return {
+        header: null
+      }
+    }
+    else {
+      return {
+        title: 'Aggie Events',
+        headerTitleStyle: {
+          color: '#000',
+          fontWeight: 'bold',
+          fontSize: 20,
+        },
+        headerStyle: {
+          backgroundColor: Colors.tabBar,
+        },
+        headerBackTitle: null, // don't want length title, just use back button
+        tintColor: 'black',
+        headerRight: (
+          <Button
+            icon={
+              <Icon
+                name='settings'
+                color={Colors.iconGray}
+              />
+            }
+            buttonStyle={{
+              backgroundColor: 'transparent',
+              paddingRight: 14,
+            }}
+            onPress={() => {
+              navigation.navigate('Settings');
+            }}
           />
-        }
-        buttonStyle={{
-          backgroundColor: 'transparent',
-          paddingRight: 14,
-        }}
-        //onPress={ }
-      />
-    )
+        )
+      }
+    }
   };
+
 
   state = {
     search: '',
@@ -129,15 +142,34 @@ export default class OrgsScreen extends React.Component {
             bottom: 0,
           }}>
           <View>
-            <SearchBar    //doesnt do anything yet
+            <LinearGradient
+              colors={['rgba(255,255,255,0.4)','transparent']}
+              style={{
+                position: 'absolute',
+                left: 0,
+                right: 0,
+                top: 0,
+                height: (Master.HideHeaders)? 100 : 0
+              }}>
+            </LinearGradient>
+          </View>
+
+          <View style={{paddingTop: (Master.HideHeaders)? '7%' : 0,}}>
+            <SearchBar
               placeholder='Search student organizations...'
               onChangeText={this.updateSearch}
               value={search}
               lightTheme
               round
               containerStyle={{
-                backgroundColor: 'rgba(255,255,255,0.2)',
+                backgroundColor: 'transparent',
                 borderColor: 'transparent',
+                borderWidth: 0, //no effect
+                shadowColor: 'white', //no effect
+                borderBottomColor: 'transparent',
+                borderTopColor: 'transparent',
+                paddingTop: (Master.HideHeaders)? '10%' : '2%',
+                paddingBottom: (Master.HideHeaders)? '5%' : '2%',
               }}
               inputStyle={styles.searchInput}
               autoCorrect={false}

@@ -39,7 +39,9 @@ HomeStack.navigationOptions = {
 
 const EventsStack = createStackNavigator({
   Events: EventsScreen,
-  Event: EventDetails
+  Event: EventDetails,
+  Org: OrgDetails,
+  Settings: SettingsScreen,
 });
 
 EventsStack.navigationOptions = {
@@ -60,7 +62,9 @@ EventsStack.navigationOptions = {
 
 const OrgsStack = createStackNavigator({
   Orgs: OrgsScreen,
-  Org: OrgDetails
+  Org: OrgDetails,
+  Event: EventDetails,
+  Settings: SettingsScreen,
 });
 
 OrgsStack.navigationOptions = {

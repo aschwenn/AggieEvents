@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   myFeed: {
     // Container for user's events feed
-    paddingTop: '10%', // Use percentages instead of ints for scalability
+    paddingTop: '6%', // Use percentages instead of ints for scalability
     //paddingBottom: '12%',
   },
   subscriptions: {
