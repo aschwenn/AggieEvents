@@ -97,6 +97,14 @@ export default class HomeScreen extends React.Component {
     return count;
   }
 
+  getDummyOrgsSubscribed() {
+    let orgs = [];
+    DummyOrgs.forEach((o) => {
+      if (o.subscribed) orgs.push(o);
+    });
+    return orgs;
+  }
+
   showError(err){
     Alert.alert(
       'Network error',
@@ -204,9 +212,10 @@ export default class HomeScreen extends React.Component {
                       if (this.state.orgShow == 'Show more'){
                         // Show 3 more events
                         let st = this.state;
-                        st.myOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,(Master.DefaultListShow * 2)) : this.getOrgs().slice(0,(Master.DefaultListShow * 2));
+                        st.myOrgs = (Master.WireframeMode)? this.getDummyOrgsSubscribed().slice(0,(Master.DefaultListShow * 2)) : this.getOrgs().slice(0,(Master.DefaultListShow * 2));
                         st.orgShow = 'Show all'
                         this.setState(st);
+                        console.log(this.state.myOrgs);
                       }
                       else {
                         // Show all events on a new page

@@ -45,18 +45,57 @@ class Discover extends React.Component {
     category: 'All',
     tempCategory: 'All',
     modalVisible: false,
+    discoverOrgs: [],
+    fullDiscoverOrgs: [],
+    orgShow: 'Show more',
+    orgNo: (Master.WireframeMode)? DummyOrgs.length : this.getOrgs().length,
   };
 
-  render() {
-    const navigate = this.props.navigate;
+  getOrgs(){
+    // Make api call for orgs
+    return [];
+  }
 
-    discoverOrgs = [];
+  // Called when page is opening
+  componentWillMount() {
     if (Master.WireframeMode){
-      discoverOrgs = DummyOrgs;
+      this.setState({discoverOrgs: DummyOrgs.slice(0,Master.DefaultListShow)});
+    }
+    else {
+      // Query the database
+      // .slice(0,Master.DefaultListShow)
+    }
+  }
+
+  refreshDiscoverOrgs() {
+    if (Master.WireframeMode){
+      // Find all orgs matching the category
+      let orgs = [];
+      if (this.state.category == 'All'){
+        this.setState({fullDiscoverOrgs: DummyOrgs});
+        this.setState({orgShow: 'Show more'});
+        this.setState({orgNo: DummyOrgs.length});
+        this.setState({discoverOrgs: DummyOrgs.slice(0, Master.DefaultListShow)});
+      }
+      else {
+        DummyOrgs.forEach((d) => {
+          if (d.category == this.state.category){
+            orgs.push(d);
+          }
+        });
+        this.setState({fullDiscoverOrgs: orgs});
+        this.setState({orgShow: 'Show more'});
+        this.setState({orgNo: orgs.length});
+        this.setState({discoverOrgs: orgs.slice(0, Master.DefaultListShow)});
+      }      
     }
     else {
       // Query the database
     }
+  }
+
+  render() {
+    const navigate = this.props.navigate;
 
     // Show Discover element only if user is not currently searching
     if (this.props.state.search != ''){
@@ -169,6 +208,7 @@ class Discover extends React.Component {
                       st.modalVisible = false;
                       st.category = st.tempCategory;
                       this.setState(st);
+                      this.refreshDiscoverOrgs();
                   }} />
                 </View>
 
@@ -177,10 +217,47 @@ class Discover extends React.Component {
           </Modal>
           
           <OrgList
-              orgs={discoverOrgs}
-              navigate={navigate}
-              show='all' // options: all | subscribed
-            ></OrgList>
+            orgs={this.state.discoverOrgs}
+            navigate={navigate}
+            show='all'
+          ></OrgList>
+
+          {((this.state.orgShow == 'Show more' &&
+            this.state.orgNo > Master.DefaultListShow) ||
+            this.state.orgShow == 'Show all' &&
+            this.state.orgNo > (Master.DefaultListShow * 2)) ?
+
+            <View style={{
+              paddingLeft: '30%',
+              paddingRight: '30%',
+              paddingTop: '2%',
+              paddingBottom: '2%'}}>
+              <Button 
+                title={this.state.orgShow}
+                type='outline'
+                titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                buttonStyle={styles.button}
+                onPress={() => {
+                  if (this.state.orgShow == 'Show more'){
+                    // Show 3 more events
+                    let st = this.state;
+                    st.discoverOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,(Master.DefaultListShow * 2)) : this.getOrgs().slice(0,(Master.DefaultListShow * 2));
+                    st.orgShow = 'Show all'
+                    this.setState(st);
+                  }
+                  else {
+                    // Show all events on a new page
+                    navigate('ShowAll', {
+                      list: this.state.fullDiscoverOrgs,
+                      type: 'orgs',
+                      details: {show: 'all'}
+                      });
+                    }
+                  }}
+                />
+              </View>
+
+            : null}
         </View>
       )
     }
@@ -391,5 +468,9 @@ const styles = StyleSheet.create({
   },
   navigationFilename: {
     marginTop: 5,
+  },
+  button: {
+    borderColor: 'white',
+    //width: '40%'
   },
 });

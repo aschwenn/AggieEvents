@@ -68,6 +68,7 @@ const OrgsStack = createStackNavigator({
   Org: OrgDetails,
   Event: EventDetails,
   Settings: SettingsScreen,
+  ShowAll: ShowAll,
 });
 
 OrgsStack.navigationOptions = {
