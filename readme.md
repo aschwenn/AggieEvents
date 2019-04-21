@@ -5,7 +5,5 @@ For information on how to set up the environment, check `config.md`.
 * EventDetails
   * Text wrapping on Host name
   * Change back button color to Colors.background1
-* HomeScreen
-  * RSVP icon next to event (if applicable)
 * OrgScreen, EventScreen
-  * Remove header
+  * Add search by category feature

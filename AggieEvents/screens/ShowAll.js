@@ -1,9 +1,6 @@
 import React from 'react';
 import {
-  Platform,
   ScrollView,
-  StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import EventList from '../components/EventList';

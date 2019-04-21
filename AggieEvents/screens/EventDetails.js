@@ -9,6 +9,7 @@ import {
 import { LinearGradient } from 'expo';
 import { Button, Icon, Divider } from 'react-native-elements';
 import Colors from '../constants/Colors';
+import Master from '../Master';
 
 class DateTime extends React.Component {
     formatTime(time){
@@ -202,6 +203,9 @@ export default class EventDetails extends React.Component {
                     this.props.navigation.getParam('interested',-1) - 1 : this.props.navigation.getParam('interested',-1),
             }
         })
+        if (!Master.WireframeMode) {
+            // Make api request
+        }
     }
 
     maybe = () => {
@@ -225,6 +229,9 @@ export default class EventDetails extends React.Component {
                     this.props.navigation.getParam('interested',-1) : this.props.navigation.getParam('interested',-1) + 1,
             }
         })
+        if (!Master.WireframeMode) {
+            // Make api request
+        }
     }
 
     notGoing = () => {
@@ -248,6 +255,9 @@ export default class EventDetails extends React.Component {
                     this.props.navigation.getParam('interested',-1) - 1 : this.props.navigation.getParam('interested',-1),
             }
         })
+        if (!Master.WireframeMode) {
+            // Make api request
+        }
     }
 
     render() {

@@ -35,7 +35,7 @@ export default class OrgList extends React.Component {
           leftIcon={{name: l.icon}}
           title={l.name}
           titleStyle={styles.orgTitle}
-          subtitle={l.description}
+          subtitle={l.subtitle}
           subtitleStyle={styles.orgSubTitle}
           style={styles.org}
           chevron
@@ -44,6 +44,13 @@ export default class OrgList extends React.Component {
               name: l.name,
               icon: l.icon,
               description: l.description,
+              subscribed: l.subscribed,
+              subtitle: l.subtitle,
+              contact: l.contact,
+              yearFounded: l.yearFounded,
+              dues: l.dues,
+              meetingLocations: l.meetingLocations,
+              category: l.category,
             });
           }}
 

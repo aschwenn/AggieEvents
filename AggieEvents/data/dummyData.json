@@ -81,27 +81,48 @@
   "DummyOrgs": [
     {
       "name": "TAMU Computing Society",
-      "description": "We like computers!",
+      "subtitle": "We like computers!",
       "icon": "computer",
-      "subscribed": true
+      "subscribed": true,
+      "description": "The purpose of the Texas A&M Computing Society is twofold. First, we strive to encourage students to explore more fully all aspects of computing technology. Towards this end, TACS hosts guest speakers from both industry and academia. Second, TACS provides an opportunity for personal growth through workshops and social interaction.",
+      "contact": "tacs-pres@cse.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "HRBB 113",
+      "category": "Academic"
     },
     {
-      "name": "Paintball Club",
-      "description": "Gig 'em with PAINTBALL",
+      "name": "Texas A&M University Paintball Club",
+      "subtitle": "Gig 'em with PAINTBALL",
       "icon": "format-paint",
-      "subscribed": false
+      "subscribed": false,
+      "description": "To: 1) establish a better understanding of the paintball sport to the general public 2) offer assistance to any TAMU organization in their paintball event/fundraiser 3) promote the integrity of the sport of paintball through responsible business partnerships 4) take part in any/all events that may promote the sport of paintball or the club",
+      "contact": "tamupaintball@gmail.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 40,
+        "semester": 25
+      },
+      "meetingLocations": null,
+      "category": "Sports"
     },
     {
-      "name": "Alpha Beta Sigma",
-      "description": "Social Fraternity",
+      "name": "Alpha Sigma Phi",
+      "subtitle": "Social Fraternity",
       "icon": "arrow-forward",
-      "subscribed": true
-    },
-    {
-      "name": "Sigma Gamma Chi",
-      "description": "Service Fraternity",
-      "icon": "arrow-back",
-      "subscribed": false
+      "subscribed": true,
+      "description": "The mission of Alpha Sigma Phi is to be the co-curricular and continuing organization of choice. The purpose of our fraternity is to Better the Man, through the creation and perpetuation of brotherhood founded upon the values of character: Silence, Charity, Purity, Honor, Patriotism.",
+      "contact": null,
+      "yearFounded": 1978,
+      "dues": {
+        "year": 1000,
+        "semester": null
+      },
+      "meetingLocations": null,
+      "category": "Social"
     }
   ]
 }
