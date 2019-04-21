@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Button, Icon } from 'react-native-elements';
@@ -59,7 +60,27 @@ export default class HomeScreen extends React.Component {
 
   getEvents(){
     // Make api call for events
-    return [];
+
+    // Use async JS and catch block for error handling
+    return fetch(Master.ServerURL + 'getEvents', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: 12345,
+        type: 'myUpcoming',
+        query: null
+      }),
+    }).then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
+      this.showError(error);
+    });
   }
 
   getOrgs(){
@@ -74,6 +95,17 @@ export default class HomeScreen extends React.Component {
       if (o.subscribed) count += 1;
     });
     return count;
+  }
+
+  showError(err){
+    Alert.alert(
+      'Network error',
+      err,
+      [
+        {text: 'OK'}
+      ],
+      {cancelable: false},
+    );
   }
 
   render() {
