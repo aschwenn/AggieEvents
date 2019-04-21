@@ -173,6 +173,7 @@ export default class OrgsScreen extends React.Component {
               }}
               inputStyle={styles.searchInput}
               autoCorrect={false}
+              inputContainerStyle={{backgroundColor: Colors.almostWhite}}
             />
           </View>
 

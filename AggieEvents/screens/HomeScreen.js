@@ -54,7 +54,7 @@ export default class HomeScreen extends React.Component {
     eventShow: 'Show more',
     orgShow: 'Show more',
     eventNo: (Master.WireframeMode)? DummyEvents.length : this.getEvents().length,
-    orgNo: (Master.WireframeMode)? DummyOrgs.length : this.getOrgs().length,
+    orgNo: (Master.WireframeMode)? this.getDummyOrgLength() : this.getOrgs().length,
   };
 
   getEvents(){
@@ -65,6 +65,15 @@ export default class HomeScreen extends React.Component {
   getOrgs(){
     // Make api call for orgs
     return [];
+  }
+
+  getDummyOrgLength(){
+    // Used for wireframe mode to select only subscribed orgs
+    let count = 0;
+    DummyOrgs.forEach((o) => {
+      if (o.subscribed) count += 1;
+    });
+    return count;
   }
 
   render() {
@@ -96,34 +105,38 @@ export default class HomeScreen extends React.Component {
               ></EventList>
 
               {((this.state.eventShow == 'Show more' &&
-                this.state.orgNo > 3) ||
+                this.state.eventNo > 3) ||
                 this.state.eventShow == 'Show all' &&
-                this.state.orgNo > 6) ?
+                this.state.eventNo > 6) ?
 
-              <View style={{
-                  paddingLeft: '30%',
-                  paddingRight: '30%',
-                  paddingTop: '2%',
-                  paddingBottom: '2%'}}>
-                <Button 
-                  title={this.state.eventShow}
-                  type='outline'
-                  titleStyle={{color: 'rgba(255,255,255,0.9)'}}
-                  buttonStyle={styles.button}
-                  onPress={() => {
-                    if (this.state.eventShow == 'Show more'){
-                      // Show 3 more events
-                      let st = this.state;
-                      st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,6) : this.getEvents().slice(0,6);
-                      st.eventShow = 'Show all'
-                      this.setState(st);
-                    }
-                    else {
-                      // Show all events on a new page
-                    }
-                  }}
-                />
-              </View>
+                <View style={{
+                    paddingLeft: '30%',
+                    paddingRight: '30%',
+                    paddingTop: '2%',
+                    paddingBottom: '2%'}}>
+                  <Button 
+                    title={this.state.eventShow}
+                    type='outline'
+                    titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                    buttonStyle={styles.button}
+                    onPress={() => {
+                      if (this.state.eventShow == 'Show more'){
+                        // Show 3 more events
+                        let st = this.state;
+                        st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,6) : this.getEvents().slice(0,6);
+                        st.eventShow = 'Show all'
+                        this.setState(st);
+                      }
+                      else {
+                        // Show all events on a new page
+                        navigate('ShowAll', {
+                          list: (Master.WireframeMode)? DummyEvents : this.getEvents(),
+                          type: 'events'
+                        });
+                      }
+                    }}
+                  />
+                </View>
 
               : null}
 
@@ -145,30 +158,35 @@ export default class HomeScreen extends React.Component {
                 this.state.orgShow == 'Show all' &&
                 this.state.orgNo > 6) ?
 
-              <View style={{
-                  paddingLeft: '30%',
-                  paddingRight: '30%',
-                  paddingTop: '2%',
-                  paddingBottom: '2%'}}>
-                <Button 
-                  title={this.state.orgShow}
-                  type='outline'
-                  titleStyle={{color: 'rgba(255,255,255,0.9)'}}
-                  buttonStyle={styles.button}
-                  onPress={() => {
-                    if (this.state.orgShow == 'Show more'){
-                      // Show 3 more events
-                      let st = this.state;
-                      st.myOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,6) : this.getOrgs().slice(0,6);
-                      st.orgShow = 'Show all'
-                      this.setState(st);
-                    }
-                    else {
-                      // Show all events on a new page
-                    }
-                  }}
-                />
-              </View>
+                <View style={{
+                    paddingLeft: '30%',
+                    paddingRight: '30%',
+                    paddingTop: '2%',
+                    paddingBottom: '2%'}}>
+                  <Button 
+                    title={this.state.orgShow}
+                    type='outline'
+                    titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                    buttonStyle={styles.button}
+                    onPress={() => {
+                      if (this.state.orgShow == 'Show more'){
+                        // Show 3 more events
+                        let st = this.state;
+                        st.myOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,6) : this.getOrgs().slice(0,6);
+                        st.orgShow = 'Show all'
+                        this.setState(st);
+                      }
+                      else {
+                        // Show all events on a new page
+                        navigate('ShowAll', {
+                          list: (Master.WireframeMode)? DummyOrgs : this.getOrgs(),
+                          type: 'orgs',
+                          details: {show: 'subscribed'}
+                        });
+                      }
+                    }}
+                  />
+                </View>
 
               : null}
 

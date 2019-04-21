@@ -128,7 +128,6 @@ export default class EventsScreen extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ backgroundColor: 'white', flex: 1 }} />
         <LinearGradient
           /* Background gradient on each page of the app */
           colors={[Colors.background1, Colors.background2]}
@@ -171,6 +170,7 @@ export default class EventsScreen extends React.Component {
               }}
               inputStyle={styles.searchInput}
               autoCorrect={false}
+              inputContainerStyle={{backgroundColor: Colors.almostWhite}}
             />
           </View>
 

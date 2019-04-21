@@ -9,12 +9,14 @@ import Colors from '../constants/Colors';
 import EventDetails from '../screens/EventDetails';
 import OrgDetails from '../screens/OrgDetails';
 import SettingsScreen from '../screens/SettingsScreen';
+import ShowAll from '../screens/ShowAll';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   Event: EventDetails,
   Org: OrgDetails,
   Settings: SettingsScreen,
+  ShowAll: ShowAll,
 });
 
 HomeStack.navigationOptions = {
@@ -42,6 +44,7 @@ const EventsStack = createStackNavigator({
   Event: EventDetails,
   Org: OrgDetails,
   Settings: SettingsScreen,
+  ShowAll: ShowAll,
 });
 
 EventsStack.navigationOptions = {
