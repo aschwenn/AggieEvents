@@ -50,8 +50,8 @@ export default class HomeScreen extends React.Component {
   };
 
   state = {
-    upcomingEvents: (Master.WireframeMode)? DummyEvents.slice(0,3) : this.getEvents().slice(0,3),
-    myOrgs: (Master.WireframeMode)? DummyOrgs.slice(0,3) : this.getOrgs().slice(0,3),
+    upcomingEvents: (Master.WireframeMode)? DummyEvents.slice(0,Master.DefaultListShow) : this.getEvents().slice(0,Master.DefaultListShow),
+    myOrgs: (Master.WireframeMode)? DummyOrgs.slice(0,Master.DefaultListShow) : this.getOrgs().slice(0,Master.DefaultListShow),
     eventShow: 'Show more',
     orgShow: 'Show more',
     eventNo: (Master.WireframeMode)? DummyEvents.length : this.getEvents().length,
@@ -137,9 +137,9 @@ export default class HomeScreen extends React.Component {
               ></EventList>
 
               {((this.state.eventShow == 'Show more' &&
-                this.state.eventNo > 3) ||
+                this.state.eventNo > Master.DefaultListShow) ||
                 this.state.eventShow == 'Show all' &&
-                this.state.eventNo > 6) ?
+                this.state.eventNo > (Master.DefaultListShow * 2)) ?
 
                 <View style={{
                     paddingLeft: '30%',
@@ -155,7 +155,7 @@ export default class HomeScreen extends React.Component {
                       if (this.state.eventShow == 'Show more'){
                         // Show 3 more events
                         let st = this.state;
-                        st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,6) : this.getEvents().slice(0,6);
+                        st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,(Master.DefaultListShow * 2)) : this.getEvents().slice(0,(Master.DefaultListShow * 2));
                         st.eventShow = 'Show all'
                         this.setState(st);
                       }
@@ -186,9 +186,9 @@ export default class HomeScreen extends React.Component {
               ></OrgList>
 
               {((this.state.orgShow == 'Show more' &&
-                this.state.orgNo > 3) ||
+                this.state.orgNo > Master.DefaultListShow) ||
                 this.state.orgShow == 'Show all' &&
-                this.state.orgNo > 6) ?
+                this.state.orgNo > (Master.DefaultListShow * 2)) ?
 
                 <View style={{
                     paddingLeft: '30%',
@@ -204,7 +204,7 @@ export default class HomeScreen extends React.Component {
                       if (this.state.orgShow == 'Show more'){
                         // Show 3 more events
                         let st = this.state;
-                        st.myOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,6) : this.getOrgs().slice(0,6);
+                        st.myOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,(Master.DefaultListShow * 2)) : this.getOrgs().slice(0,(Master.DefaultListShow * 2));
                         st.orgShow = 'Show all'
                         this.setState(st);
                       }

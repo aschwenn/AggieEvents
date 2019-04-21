@@ -9,6 +9,22 @@ import { LinearGradient } from 'expo';
 import Colors from '../constants/Colors';
 
 export default class ShowAll extends React.Component {
+  static navigationOptions = ({navigation}) => {
+    return {
+      title: navigation.getParam('title',''),
+      headerTitleStyle: {
+        color: '#000',
+        fontWeight: 'bold',
+        fontSize: 20,
+      },
+      headerStyle: {
+        backgroundColor: Colors.tabBar,
+      },
+      headerBackTitle: null, // don't want length title, just use back button
+      tintColor: 'black',
+    }
+  }
+
   render() {
     const { navigation } = this.props;
     const { navigate } = this.props.navigation;

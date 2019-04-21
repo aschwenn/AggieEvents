@@ -37,6 +37,38 @@ class SearchResults extends React.Component {
 }
 
 class Discover extends React.Component {
+
+  state = {
+    upcomingEvents: (Master.WireframeMode)? DummyEvents.slice(0,Master.DefaultListShow) : this.getEvents().slice(0,Master.DefaultListShow),
+    eventShow: 'Show more',
+    eventNo: (Master.WireframeMode)? DummyEvents.length : this.getEvents().length,
+  };
+
+  getEvents(){
+    // Make api call for events
+
+    // Use async JS and catch block for error handling
+    return fetch(Master.ServerURL + 'getEvents', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: 12345,
+        type: 'myUpcoming',
+        query: null
+      }),
+    }).then((response) => response.json())
+    .then((responseJson) => {
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
+      this.showError(error);
+    });
+  }
+
   render() {
     const navigate = this.props.navigate;
 
@@ -62,9 +94,46 @@ class Discover extends React.Component {
           </View>
 
           <EventList
-            events={discoverEvents}
-            navigate={navigate}
-          ></EventList>
+                events={this.state.upcomingEvents}
+                navigate={navigate}
+              ></EventList>
+
+              {((this.state.eventShow == 'Show more' &&
+                this.state.eventNo > Master.DefaultListShow) ||
+                this.state.eventShow == 'Show all' &&
+                this.state.eventNo > (Master.DefaultListShow * 2)) ?
+
+                <View style={{
+                    paddingLeft: '30%',
+                    paddingRight: '30%',
+                    paddingTop: '2%',
+                    paddingBottom: '2%'}}>
+                  <Button 
+                    title={this.state.eventShow}
+                    type='outline'
+                    titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                    buttonStyle={styles.button}
+                    onPress={() => {
+                      if (this.state.eventShow == 'Show more'){
+                        // Show 3 more events
+                        let st = this.state;
+                        st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,(Master.DefaultListShow * 2)) : this.getEvents().slice(0,(Master.DefaultListShow * 2));
+                        st.eventShow = 'Show all'
+                        this.setState(st);
+                      }
+                      else {
+                        // Show all events on a new page
+                        navigate('ShowAll', {
+                          list: (Master.WireframeMode)? DummyEvents : this.getEvents(),
+                          type: 'events',
+                          title: 'This Week',
+                        });
+                      }
+                    }}
+                  />
+                </View>
+
+              : null}
         </View>
       )
     }
@@ -216,4 +285,8 @@ const styles = StyleSheet.create({
   eventSubTitle: {
     color: Colors.lightGray,
   }, 
+  button: {
+    borderColor: 'white',
+    //width: '40%'
+  },
 });
