@@ -50,6 +50,30 @@ console.log('Hello, world!');
 /* Print statements are made with console.log();
  * these will show up in your terminal window. */
 
+/* Test data */
+var testEvents = [
+  {
+    "name": "Maysfest",
+    "icon": "people",
+    "location": "Wehner",
+    "host": "Business Student Council",
+    "startDate": "04-10-2019",
+    "startDayofWeek": 2,
+    "endDate": "04-10-2019",
+    "endDayofWeek": 2,
+    "startTime": "1000",
+    "endTime": "1400",
+    "description": "Howdy folks! Maysfest is back and more Texan than ever!  Come on out for a big ole' heaping portion of food, games, and more! We can't predict the weather, but we can predict that fun will be had - the Maysfest way! So grab some friends and head over to Mays because you don't wanna miss the BEST STATE EVER!!! Whoops, we mean THE BEST DAY EVER!!!",
+    "going": 53,
+    "interested": 12,
+    "attributes": [
+      "Kid-friendly",
+      "Free food"
+    ],
+    "RSVP": "going"
+  },
+];
+
 /* HTTP request handlers */
 app.get('/', (req, res) => {
   /* Node.js uses arrow functions (like () => {...}) very often
@@ -90,6 +114,8 @@ app.post('/postData/', (req, res) => {
    // Making sure the data was sent correctly
    if (!req.body || !req.body.name || !req.body.major || !req.body.classification){
      res.status(400).send('400 error: bad request!');
+     console.log('POST /postData/\t\t' + 'Bad request!')
+     console.log(new Date() + '\n');
    }
 
    console.log('POST /postData/\t\t' + 'Data request for ' + req.body.name);
@@ -106,7 +132,48 @@ app.get('/kill/', (req, res) => {
   console.log(new Date() + '\n');
 
   process.exit();
-})
+});
+
+/* Time for the real code... */
+app.post('/getEvents/', (req, res) => {
+  if (!req.body || !req.body.type || !req.body.userId){
+    res.status(400).send('400 error: bad request!');
+    console.log('POST /getEvents/\t\t' + 'Bad request!')
+    console.log(new Date() + '\n');
+  }
+
+  console.log('POST /getEvents/\t\t' + "Get '" + req.body.type + "' for " + req.body.userId);
+  console.log(new Date() + '\n');
+
+  /* Request data format:
+   * {
+   *  type: all | myUpcoming | allThisWeek | category
+   *  query:
+   *    if all, null
+   *    if myUpcoming, null
+   *    if allThisWeek, null
+   *    if category, category type
+   *  userId: UIN
+   * }
+   */
+
+    res.send(testEvents);
+});
+app.post('/searchEvents/', (req, res) => {
+  if (!req.body || !req.body.query){
+    res.status(400).send('400 error: bad request!');
+    console.log('POST /searchEvents/\t\t' + 'Bad request!')
+    console.log(new Date() + '\n');
+  }
+
+  /* Request data format:
+   * {
+   *  query: search terms
+   *  category: can be category or null
+   * }
+   */
+  
+});
 
 /* Start the server on a port on our machine */
 var port = 8080;
