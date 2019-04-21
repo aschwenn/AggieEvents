@@ -19,6 +19,41 @@ export default class SettingsScreen extends React.Component {
   }
 
   version = '1.0.0';
+
+  state = {
+    onlineTest: 'This app is currently offline.',
+  }
+
+  isOnline(){
+    /* Checks if server is still online */
+    console.log('Fetching...');
+    return fetch('https://facebook.github.io/react-native/movies.json', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => response.json())
+    .then((responseJson) => {
+      console.log('Data fetched.');
+      return responseJson;
+    })
+    .catch((error) => {
+      console.error(error);
+      this.showError(error);
+    });
+    return 'Offline...';
+  }
+
+  componentWillMount() {
+    console.log("\n\nRequesting data...");
+    this.isOnline().then((res) => {
+      let st = this.state;
+      st.onlineTest = res.description;
+      this.setState(st);
+      console.log('Data successfully received!\n\n');
+    });
+  }
   
   render() {
     return (
@@ -37,7 +72,7 @@ export default class SettingsScreen extends React.Component {
             title='Log Out'
             type='outline'
             titleStyle={{color: Colors.background1}}
-            buttonStyle={{borderColor: Colors.background1}}
+            buttonStyle={{borderColor: Colors.background1, paddingBottom: '5%', paddingTop: '0%'}}
             containerStyle={{paddingTop: '5%', paddingBottom: '1%'}}
             onPress={() => {
               Alert.alert(
@@ -64,7 +99,7 @@ export default class SettingsScreen extends React.Component {
             title='About this project'
             type='outline'
             titleStyle={{color: Colors.lightGray}}
-            buttonStyle={{borderColor: Colors.lightGray}}
+            buttonStyle={{borderColor: Colors.lightGray, paddingBottom: '5%', paddingTop: '0%'}}
             containerStyle={{paddingTop: '5%', paddingBottom: '1%'}}
             onPress={ async () => {
               WebBrowser.openBrowserAsync('https://github.com/aschwenn/AggieEvents');
@@ -78,6 +113,11 @@ export default class SettingsScreen extends React.Component {
             <Divider style={{
               backgroundColor: Colors.almostBlack,
             }} />
+          </View>
+          <View style={{paddingTop: '5%', paddingBottom: '5%'}}>
+            <Text style={styles.version}>
+              {this.state.onlineTest}
+            </Text>
           </View>
           <View style={{paddingTop: '10%'}}>
             <Text style={styles.version}>
