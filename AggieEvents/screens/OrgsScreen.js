@@ -5,6 +5,9 @@ import {
   StyleSheet,
   Text,
   View,
+  Picker,
+  Modal,
+  TouchableHighlight
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import Colors from '../constants/Colors';
@@ -37,6 +40,13 @@ class SearchResults extends React.Component {
 }
 
 class Discover extends React.Component {
+
+  state = {
+    category: 'All',
+    tempCategory: 'All',
+    modalVisible: false,
+  };
+
   render() {
     const navigate = this.props.navigate;
 
@@ -60,7 +70,112 @@ class Discover extends React.Component {
               Discover Organizations
             </Text>
           </View>
+          
+          <View style={{
+            paddingLeft: '15%',
+            paddingRight: '15%',
+            paddingTop: '2%',
+            paddingBottom: '2%'
+          }}>
+            <Button 
+              title={'Category: ' + this.state.category}
+              type='outline'
+              titleStyle={{color: Colors.almostWhite}}
+              buttonStyle={{borderColor: Colors.almostWhite, paddingBottom: '5%', paddingTop: '0%'}}
+              containerStyle={{paddingTop: 0, paddingBottom: '2%'}}
+              onPress={() => {
+                let st = this.state;
+                st.modalVisible = true;
+                this.setState(st);
+              }}
+            />  
+          </View>
 
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.modalVisible}
+            onRequestClose={() => {
+              Alert.alert('Modal has been closed.');
+            }}>
+            <View style={{
+              //marginTop: 200,
+              flex: 1,
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center'
+              }}>
+              <View style={{
+                backgroundColor: 'rgba(255,255,255,0.95)',
+                padding: 20,
+                borderRadius: 15,
+                borderColor: Colors.almostBlack,
+                borderWidth: 2,
+                }}>
+                <Text style={{
+                  fontSize: 20,
+                  textAlign: 'center',
+                }}>Search by Category</Text>
+
+                <View style={{
+                  paddingTop: '5%',
+                  paddingBottom: '5%',
+                }}>
+                  <Picker
+                    selectedValue={this.state.tempCategory}
+                    style={{
+                      height: 44,
+                      width: 250,
+                    }}
+                    onValueChange={(itemValue, itemIndex) =>
+                      this.setState({tempCategory: itemValue})
+                    }
+                    itemStyle={{
+                      color: Colors.almostBlack,
+                      height: 44,
+                    }}  
+                  >
+                    <Picker.Item label='All' value='All' />
+                    {
+                      Master.AcceptedCategories.map((cat, i) => (
+                          <Picker.Item label={cat} value={cat} key={i} />
+                        )
+                      )
+                    }
+                  </Picker>
+                </View>
+                
+                <View style={{flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                  <Button 
+                    title={'Cancel'}
+                    type='outline'
+                    titleStyle={{color: 'black', fontSize: 20}}
+                    buttonStyle={{borderColor: 'black', paddingBottom: '5%', paddingTop: '0%', borderWidth: 1}}
+                    containerStyle={{padding: '5%'}}
+                    onPress={() => {
+                      let st = this.state;
+                      st.modalVisible = false;
+                      st.tempCategory = st.category;
+                      this.setState(st);
+                  }} />
+                  <Button 
+                    title={'OK'}
+                    type='outline'
+                    titleStyle={{color: Colors.almostBlack, fontSize: 20}}
+                    buttonStyle={{borderColor: Colors.almostBlack, paddingBottom: '5%', paddingTop: '0%'}}
+                    containerStyle={{padding: '5%'}}
+                    onPress={() => {
+                      let st = this.state;
+                      st.modalVisible = false;
+                      st.category = st.tempCategory;
+                      this.setState(st);
+                  }} />
+                </View>
+
+              </View>
+            </View>
+          </Modal>
+          
           <OrgList
               orgs={discoverOrgs}
               navigate={navigate}
@@ -195,7 +310,7 @@ const styles = StyleSheet.create({
     paddingTop: '10%',
     paddingLeft: '10%',
     paddingRight: '10%',
-    paddingBottom: '5%',
+    paddingBottom: '2%',
   },
   discoverText: {
     textAlign: 'center',

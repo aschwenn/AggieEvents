@@ -90,7 +90,7 @@ var acceptedCategories = [
   'Arts and Culture',
   'Campus Service',
   'Community/Volunteer Service',
-  'Cultural/Internation',
+  'Cultural/International',
   'Division of Student Affairs',
   'Enthusiasts',
   'Global Service',
@@ -212,7 +212,7 @@ app.post('/getEvents/', (req, res) => {
       // Check that query (category) in accepted list of categories
       if (acceptedCategories.includes(req.body.query)){
         // Perform search
-        
+
       }
       else {
         res.status(400).send('400 error: bad request: category');

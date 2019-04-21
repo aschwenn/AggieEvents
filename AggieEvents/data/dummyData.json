@@ -92,7 +92,7 @@
         "semester": 10
       },
       "meetingLocations": "HRBB 113",
-      "category": "Academic"
+      "category": "Academic-Engineering"
     },
     {
       "name": "Texas A&M University Paintball Club",
@@ -107,7 +107,7 @@
         "semester": 25
       },
       "meetingLocations": null,
-      "category": "Sports"
+      "category": "Sport Clubs"
     },
     {
       "name": "Alpha Sigma Phi",
@@ -122,7 +122,7 @@
         "semester": null
       },
       "meetingLocations": null,
-      "category": "Social"
+      "category": "Greek Life"
     }
   ]
 }
