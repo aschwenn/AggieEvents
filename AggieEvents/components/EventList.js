@@ -43,6 +43,7 @@ export default class EventList extends React.Component {
           subtitle={l.host}
           subtitleStyle={styles.eventSubTitle}
           style={styles.event}
+          contentContainerStyle={{height: 40}}
           chevron
           onPress={() => {
             navigate('Event', {
@@ -73,6 +74,7 @@ export default class EventList extends React.Component {
 const styles = StyleSheet.create({
   event: {
     padding: '2%',
+    flex: 1,
   },
   eventTitle: {
     fontSize: 18,
