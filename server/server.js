@@ -74,6 +74,46 @@ var testEvents = [
   },
 ];
 
+var acceptedCategories = [
+  'Academic Support',
+  'Academic-Agriculture',
+  'Academic-Architecture',
+  'Academic-Bush School',
+  'Academic-Business',
+  'Academic-College of Science',
+  'Academic-Education',
+  'Academic-Engineering',
+  'Academic-Geosciences',
+  'Academic-Graduate College',
+  'Academic-Health Sciences Center',
+  'Academic-Liberal Arts',
+  'Arts and Culture',
+  'Campus Service',
+  'Community/Volunteer Service',
+  'Cultural/Internation',
+  'Division of Student Affairs',
+  'Enthusiasts',
+  'Global Service',
+  'Greek Life',
+  'Healthy Living',
+  'Honor',
+  'Memorial Student Center',
+  'Military',
+  'Professional/Career',
+  'Recreation',
+  'Religious',
+  'Residence Halls',
+  'Safety Resources',
+  'Social and Political Issues',
+  'Special Interests',
+  'Spirit and Tradition',
+  'Sport Clubs',
+  'Student Government',
+  'TAMU Law',
+  'University Services',
+  'Veterinary Medicine',
+];
+
 /* HTTP request handlers */
 app.get('/', (req, res) => {
   /* Node.js uses arrow functions (like () => {...}) very often
@@ -138,7 +178,7 @@ app.get('/kill/', (req, res) => {
 app.post('/getEvents/', (req, res) => {
   if (!req.body || !req.body.type || !req.body.userId){
     res.status(400).send('400 error: bad request!');
-    console.log('POST /getEvents/\t\t' + 'Bad request!')
+    console.log('POST /getEvents/\t\t' + 'Bad request - missing data');
     console.log(new Date() + '\n');
   }
 
@@ -156,6 +196,30 @@ app.post('/getEvents/', (req, res) => {
    *  userId: UIN
    * }
    */
+
+    if (req.body.type == 'all'){
+      // Send all events in the table, sorted by date
+    }
+    else if (req.body.type == 'myUpcoming'){
+      // Send upcoming events for userId, sorted by date
+    }
+    else if (req.body.type == 'allThisWeek'){
+      // Send all events for this week, sorted by date
+    }
+    else if (req.body.type == 'category'){
+      // Send all events for category, sorted by date
+
+      // Check that query (category) in accepted list of categories
+      if (acceptedCategories.includes(req.body.query)){
+        // Perform search
+        
+      }
+      else {
+        res.status(400).send('400 error: bad request: category');
+        console.log('POST /getEvents/\t\t' + 'Bad request - illegal category');
+        console.log(new Date() + '\n');
+      }
+    }
 
     res.send(testEvents);
 });

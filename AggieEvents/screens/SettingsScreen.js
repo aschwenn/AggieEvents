@@ -115,6 +115,9 @@ export default class SettingsScreen extends React.Component {
             }} />
           </View>
           <View style={{paddingTop: '5%', paddingBottom: '5%'}}>
+            <Text style={styles.onlineTitle}>
+              Online connectivity status
+            </Text>
             <Text style={styles.version}>
               {this.state.onlineTest}
             </Text>
@@ -159,6 +162,14 @@ const styles = StyleSheet.create({
   version: {
     color: Colors.almostBlack,
     fontSize: 16,
+    textAlign: 'left',
+    paddingTop: '2%',
+    paddingBottom: '2%',
+    flex: 1
+  },
+  onlineTitle: {
+    color: Colors.almostBlack,
+    fontSize: 20,
     textAlign: 'left',
     paddingTop: '2%',
     paddingBottom: '2%',
