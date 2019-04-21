@@ -48,20 +48,27 @@ export default class HomeScreen extends React.Component {
     };
   };
 
+  state = {
+    upcomingEvents: (Master.WireframeMode)? DummyEvents.slice(0,3) : this.getEvents().slice(0,3),
+    myOrgs: (Master.WireframeMode)? DummyOrgs.slice(0,3) : this.getOrgs().slice(0,3),
+    eventShow: 'Show more',
+    orgShow: 'Show more',
+    eventNo: (Master.WireframeMode)? DummyEvents.length : this.getEvents().length,
+    orgNo: (Master.WireframeMode)? DummyOrgs.length : this.getOrgs().length,
+  };
+
+  getEvents(){
+    // Make api call for events
+    return [];
+  }
+
+  getOrgs(){
+    // Make api call for orgs
+    return [];
+  }
+
   render() {
     const {navigate} = this.props.navigation;
-
-    upcomingEvents = [];
-    myOrgs = [];
-
-    if (Master.WireframeMode){
-      // Use local data
-      upcomingEvents = DummyEvents;
-      myOrgs = DummyOrgs;
-    }
-    else {
-      // Query database for data
-    }
 
     return (
       <View style={{ flex: 1 }}>
@@ -84,9 +91,42 @@ export default class HomeScreen extends React.Component {
               </Text>
 
               <EventList
-                events={upcomingEvents}
+                events={this.state.upcomingEvents}
                 navigate={navigate}
               ></EventList>
+
+              {((this.state.eventShow == 'Show more' &&
+                this.state.orgNo > 3) ||
+                this.state.eventShow == 'Show all' &&
+                this.state.orgNo > 6) ?
+
+              <View style={{
+                  paddingLeft: '30%',
+                  paddingRight: '30%',
+                  paddingTop: '2%',
+                  paddingBottom: '2%'}}>
+                <Button 
+                  title={this.state.eventShow}
+                  type='outline'
+                  titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                  buttonStyle={styles.button}
+                  onPress={() => {
+                    if (this.state.eventShow == 'Show more'){
+                      // Show 3 more events
+                      let st = this.state;
+                      st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,6) : this.getEvents().slice(0,6);
+                      st.eventShow = 'Show all'
+                      this.setState(st);
+                    }
+                    else {
+                      // Show all events on a new page
+                    }
+                  }}
+                />
+              </View>
+
+              : null}
+
             </View>
 
             <View style={styles.subscriptions}>
@@ -95,10 +135,43 @@ export default class HomeScreen extends React.Component {
               </Text>
 
               <OrgList
-                orgs={myOrgs}
+                orgs={this.state.myOrgs}
                 navigate={navigate}
                 show='subscribed'
               ></OrgList>
+
+              {((this.state.orgShow == 'Show more' &&
+                this.state.orgNo > 3) ||
+                this.state.orgShow == 'Show all' &&
+                this.state.orgNo > 6) ?
+
+              <View style={{
+                  paddingLeft: '30%',
+                  paddingRight: '30%',
+                  paddingTop: '2%',
+                  paddingBottom: '2%'}}>
+                <Button 
+                  title={this.state.orgShow}
+                  type='outline'
+                  titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                  buttonStyle={styles.button}
+                  onPress={() => {
+                    if (this.state.orgShow == 'Show more'){
+                      // Show 3 more events
+                      let st = this.state;
+                      st.myOrgs = (Master.WireframeMode)? DummyOrgs.slice(0,6) : this.getOrgs().slice(0,6);
+                      st.orgShow = 'Show all'
+                      this.setState(st);
+                    }
+                    else {
+                      // Show all events on a new page
+                    }
+                  }}
+                />
+              </View>
+
+              : null}
+
             </View>
 
           </ScrollView>
@@ -150,6 +223,10 @@ const styles = StyleSheet.create({
     color: 'white',
     lineHeight: 24,
     textAlign: 'center',
+  },
+  button: {
+    borderColor: 'white',
+    //width: '40%'
   },
   tabBarInfoContainer: {
     position: 'absolute',
