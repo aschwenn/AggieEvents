@@ -122,12 +122,14 @@ const styles = StyleSheet.create({
     paddingLeft: '10%',
     paddingRight: '10%',
     paddingBottom: '5%',
+    //height: 150
   },
   titleText: {
     textAlign: 'center',
     color: 'white',
     fontSize: 25,
     fontWeight: "bold",
-    paddingBottom: '2%'
+    paddingBottom: '2%',
+    height: 33
   },
 });

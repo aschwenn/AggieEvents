@@ -288,121 +288,123 @@ export default class EventDetails extends React.Component {
                         bottom: 0,
                     }}>
                     <ScrollView style={styles.eventStyle}>
-                        <Text /* Event Name */
-                            style={styles.title}>
-                            {eventName}
-                        </Text>
-                        <View /* Host organization */
-                            style={{
-                                flexDirection: 'row', 
-                                //flexWrap: 'wrap',
-                            }}>
-                            <Text style={styles.subtitle}>Hosted by </Text>
-                            <Text style={styles.host}
-                                numberOfLines={1}
-                                ellipsizeMode='tail'
-                            >{host}</Text>
-                        </View>
-                        <DateTime /* Date and time of event */
-                            startDate={startDate}
-                            endDate={endDate}
-                            startDayofWeek={startDayofWeek}
-                            endDayofWeek={endDayofWeek}
-                            startTime={startTime}
-                            endTime={endTime}
-                        ></DateTime>
-                        <View /* Location */
-                            style={{flexDirection: 'row'}}>
-                            <Icon style={styles.locationIcon}
-                                name='location-on'
-                                color='white'
-                                size={20}
-                            ></Icon>
-                            <Text style={styles.locationText}> {location}</Text>
-                        </View>
-                        <View /* RSVP Buttons */
-                            style={{
-                                flexDirection: 'row',
-                                paddingTop: '2%',
-                                paddingBottom: '2%',
-                            }}>
-                            <Button
-                                icon={
-                                    <Icon
-                                        name='check'
-                                        size={15}
-                                        color='white'
-                                    />
-                                }
-                                title='Going'
-                                type={this.state.going.button}
-                                titleStyle={styles.rsvpButtonTitle}
-                                buttonStyle={this.state.going.style}
-                                containerStyle={{paddingRight: '3%'}}
-                                onPress={this.going}
-                            />
-                            <Button
-                                icon={
-                                    <Icon
-                                        name='help-outline'
-                                        size={15}
-                                        color='white'
-                                    />
-                                }
-                                title='Maybe'
-                                type={this.state.maybe.button}
-                                titleStyle={styles.rsvpButtonTitle}
-                                buttonStyle={this.state.maybe.style}
-                                containerStyle={{paddingRight: '3%'}}
-                                onPress={this.maybe}
-                            />
-                            <Button
-                                icon={
-                                    <Icon
-                                        name='clear'
-                                        size={15}
-                                        color='white'
-                                    />
-                                }
-                                title='Not Going'
-                                type={this.state.notGoing.button}
-                                titleStyle={styles.rsvpButtonTitle}
-                                buttonStyle={this.state.notGoing.style}
-                                onPress={this.notGoing}
-                            />
-                        </View>
-                        <View // Attendees
-                            style={{
-                                flexDirection: 'row',
-                                paddingTop: '2%',
-                                paddingBottom: '2%',
-                            }}>
-                            <Text style={styles.attendees}>{this.state.rsvped.going}</Text>
-                            <Text style={styles.subtitle2}> going, </Text>
-                            <Text style={styles.attendees}>{this.state.rsvped.interested}</Text>
-                            <Text style={styles.subtitle2}> interested</Text>
-                        </View>
-                        {/*<View style={{paddingTop:'2%',paddingBottom:'2%'}}>
-                            <Divider style={{backgroundColor:Colors.almostWhite}}></Divider>
-                        </View>*/}
-                        <View /* Description */>
-                            <Text style={styles.subtitle}>About</Text>
-                            <Text style={styles.description}>
-                                {description}
+                        <View style={{paddingBottom: 50}}>
+                            <Text /* Event Name */
+                                style={styles.title}>
+                                {eventName}
                             </Text>
-                            <View>
-                                {
-                                    attributes.map((a,i) => (
-                                        <View style={styles.attribute} key={i}>
-                                            <Icon style={styles.attributeIcon}
-                                                name='check'
-                                                color='white'
-                                                size={20}
-                                            ></Icon>
-                                        <Text style={styles.attributeText}> {a}</Text>
-                                       </View>
-                                    ))
-                                }
+                            <View /* Host organization */
+                                style={{
+                                    flexDirection: 'row', 
+                                    //flexWrap: 'wrap',
+                                }}>
+                                <Text style={styles.subtitle}>Hosted by </Text>
+                                <Text style={styles.host}
+                                    numberOfLines={1}
+                                    ellipsizeMode='tail'
+                                >{host}</Text>
+                            </View>
+                            <DateTime /* Date and time of event */
+                                startDate={startDate}
+                                endDate={endDate}
+                                startDayofWeek={startDayofWeek}
+                                endDayofWeek={endDayofWeek}
+                                startTime={startTime}
+                                endTime={endTime}
+                            ></DateTime>
+                            <View /* Location */
+                                style={{flexDirection: 'row'}}>
+                                <Icon style={styles.locationIcon}
+                                    name='location-on'
+                                    color='white'
+                                    size={20}
+                                ></Icon>
+                                <Text style={styles.locationText}> {location}</Text>
+                            </View>
+                            <View /* RSVP Buttons */
+                                style={{
+                                    flexDirection: 'row',
+                                    paddingTop: '2%',
+                                    paddingBottom: '0%',
+                                }}>
+                                <Button
+                                    icon={
+                                        <Icon
+                                            name='check'
+                                            size={15}
+                                            color='white'
+                                        />
+                                    }
+                                    title='Going'
+                                    type={this.state.going.button}
+                                    titleStyle={styles.rsvpButtonTitle}
+                                    buttonStyle={this.state.going.style}
+                                    containerStyle={{paddingRight: '3%'}}
+                                    onPress={this.going}
+                                />
+                                <Button
+                                    icon={
+                                        <Icon
+                                            name='help-outline'
+                                            size={15}
+                                            color='white'
+                                        />
+                                    }
+                                    title='Maybe'
+                                    type={this.state.maybe.button}
+                                    titleStyle={styles.rsvpButtonTitle}
+                                    buttonStyle={this.state.maybe.style}
+                                    containerStyle={{paddingRight: '3%'}}
+                                    onPress={this.maybe}
+                                />
+                                <Button
+                                    icon={
+                                        <Icon
+                                            name='clear'
+                                            size={15}
+                                            color='white'
+                                        />
+                                    }
+                                    title='Not Going'
+                                    type={this.state.notGoing.button}
+                                    titleStyle={styles.rsvpButtonTitle}
+                                    buttonStyle={this.state.notGoing.style}
+                                    onPress={this.notGoing}
+                                />
+                            </View>
+                            <View // Attendees
+                                style={{
+                                    flexDirection: 'row',
+                                    paddingTop: '2%',
+                                    paddingBottom: '0%',
+                                }}>
+                                <Text style={styles.attendees}>{this.state.rsvped.going}</Text>
+                                <Text style={styles.subtitle2}> going, </Text>
+                                <Text style={styles.attendees}>{this.state.rsvped.interested}</Text>
+                                <Text style={styles.subtitle2}> interested</Text>
+                            </View>
+                            {/*<View style={{paddingTop:'2%',paddingBottom:'2%'}}>
+                                <Divider style={{backgroundColor:Colors.almostWhite}}></Divider>
+                            </View>*/}
+                            <View /* Description */>
+                                <Text style={styles.subtitle}>About</Text>
+                                <Text style={styles.description}>
+                                    {description}
+                                </Text>
+                                <View>
+                                    {
+                                        attributes.map((a,i) => (
+                                            <View style={styles.attribute} key={i}>
+                                                <Icon style={styles.attributeIcon}
+                                                    name='check'
+                                                    color='white'
+                                                    size={20}
+                                                ></Icon>
+                                            <Text style={styles.attributeText}> {a}</Text>
+                                        </View>
+                                        ))
+                                    }
+                                </View>
                             </View>
                         </View>
                     </ScrollView>

@@ -285,6 +285,8 @@ const styles = StyleSheet.create({
   },
   button: {
     borderColor: 'white',
+    paddingTop: '2%',
+    paddingBottom: '8%'
     //width: '40%'
   },
   tabBarInfoContainer: {

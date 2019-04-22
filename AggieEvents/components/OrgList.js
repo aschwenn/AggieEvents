@@ -37,6 +37,7 @@ export default class OrgList extends React.Component {
           titleStyle={styles.orgTitle}
           subtitle={l.subtitle}
           subtitleStyle={styles.orgSubTitle}
+          contentContainerStyle={{height: 40}}
           style={styles.org}
           chevron
           onPress={() => {

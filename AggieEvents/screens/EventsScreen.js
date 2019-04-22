@@ -111,7 +111,7 @@ class Discover extends React.Component {
                   <Button 
                     title={this.state.eventShow}
                     type='outline'
-                    titleStyle={{color: 'rgba(255,255,255,0.9)'}}
+                    titleStyle={{color: 'rgba(255,255,255,0.9)', padding: 0}}
                     buttonStyle={styles.button}
                     onPress={() => {
                       if (this.state.eventShow == 'Show more'){
@@ -287,6 +287,8 @@ const styles = StyleSheet.create({
   }, 
   button: {
     borderColor: 'white',
+    paddingTop: '2%',
+    paddingBottom: '8%'
     //width: '40%'
   },
 });
