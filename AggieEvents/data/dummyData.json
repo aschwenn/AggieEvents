@@ -156,6 +156,128 @@
       },
       "meetingLocations": null,
       "category": "Greek Life"
-    }
+    },
+     {
+      "name": "MSC L.T. Jordan Institute",
+      "subtitle": "We like Jordan!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "Knowledge of international cultures is more important to success than ever. MSC L.T. Jordan Institute members assist in promoting and coordinating programs designed to give Aggies a taste of other cultures--both on and off campus. Programs include international service, internship and research opportunities and on campus demonstrations and lectures.",
+      "contact": "ji-chair@msc.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+     {
+      "name": "Professional Association for Industrial Distribution",
+      "subtitle": "We like Industrial Distribution!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "PAID is an organization for promoting student involvement with Industrial Distribution faculty and industry personnel. Student members organize and publicize business meetings, power lunches, social events, field trips, publications, and more to provide opportunities outside the classroom to enhance career skills.",
+      "contact": "PAID.President@gmail.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+     {
+      "name": "Society of Petroleum Engineers (SPE)",
+      "subtitle": "We like Industrial Distribution!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "To collect, disseminate, and exchange technical knowledge concerning the exploration, development and production of oil and gas resources, and related technologies for the public benefit and to provide opportunities for professionals to enhance their technical and professional competence. The dissemination of knowledge of the theory and practice of all aspects of petroleum engineering, and the furtherance of the professional development of the student member.",
+      "contact": "spe_president@pe.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+ {
+      "name": "MSC Freshmen in Service and Hosting",
+      "subtitle": "We like Industrial Distribution!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "If you're interested in providing service to campus, then MSC Freshmen in Service and Hosting (FISH) is the Freshmen Leadership Organization for you. FISH members learn about leadership by organizing and participating in service projects on campus and in the community. FISH's most notable program is Kyle Field Day, which is a one day event that provides citizens of Bryan and College Station and the students of Texas A&M a chance to have fun on Kyle Field and enjoy food and live music while actively engaging in service and seeking continued involvement in the community.",
+      "contact": "null",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+ {
+      "name": "MSC Freshmen in Service and Hosting",
+      "subtitle": "We like MSC!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "If you're interested in providing service to campus, then MSC Freshmen in Service and Hosting (FISH) is the Freshmen Leadership Organization for you. FISH members learn about leadership by organizing and participating in service projects on campus and in the community. FISH's most notable program is Kyle Field Day, which is a one day event that provides citizens of Bryan and College Station and the students of Texas A&M a chance to have fun on Kyle Field and enjoy food and live music while actively engaging in service and seeking continued involvement in the community.",
+      "contact": "null",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+ {
+      "name": "Phi Lota Alpha",
+      "subtitle": "We like MSC!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "Phi Iota Alpha Fraternity, Inc., established December 26, 1931 is the Oldest Latino Fraternity in Existence. The brotherhood is composed of undergraduate, graduate, and professional men internationally. Brothers of the organization commit themselves toward the empowerment of the Latino community by providing intensive social and cultural programs and activities geared toward the appreciation, promotion and preservation of Latin American culture. Membership in Phi Iota Alpha is open to all men regardless of race, creed, color, or national origin.",
+      "contact": "tamuphiotas@spsj1931.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+
+ {
+      "name": "Student Business Owners Association",
+      "subtitle": "We like SBSA!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "Our goal is to create a collaborative and inviting community as well as provide a close-knit peer network for student business owners.",
+      "contact": "null",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ },
+ {
+      "name": "Wildlife Warriors",
+      "subtitle": "We like WildLife!",
+      "icon": "computer",
+      "subscribed": false,
+      "description": "To serve as a technical organization for students with a genuine interest in wildlife and fisheries sciences. Society events and meetings encourage communication between members, nonmembers,and professionals to create an atmosphere where understanding of the resource management sciences can be improved. Our society takes the students' interests to heart and provides information and links to vital new opportunities involving wildlife conservation, research, and management.",
+      "contact": "wildlife@listserv.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": "null 113",
+      "category": "null"
+ }
+    
   ]
 }
