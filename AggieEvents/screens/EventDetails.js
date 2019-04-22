@@ -345,7 +345,8 @@ export default class EventDetails extends React.Component {
                                             {cancelable: false},
                                         );
                                     }
-                                }}>
+                                }}
+                                style={{ width: 230, paddingTop: 2 }}>
                                     <Text style={styles.host}
                                         numberOfLines={1}
                                         ellipsizeMode='tail'

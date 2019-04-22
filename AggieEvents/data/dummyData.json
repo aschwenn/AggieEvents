@@ -307,25 +307,7 @@
       "meetingLocations": null,
       "category": "University Services"
     },
-	
-	{
-      "name": "College of Agriculture & Life Sciences Student Council",
-      "subtitle": "Earth matters!",
-      "icon": "settings-power",
-      "subscribed": false,
-      "description": "The Texas A&M University College of Agriculture and Life Sciences Student Council unifies and serves our students by promoting, communication, encouraging personal development, and providing opportunities for social interaction in order to create leadership in Agriculture and the Life Sciences.",
-      "contact": "coalscouncil@gmail.com",
-      "yearFounded": null,
-      "dues": {
-        "year": 20,
-        "semester": 10
-      },
-      "meetingLocations": null,
-      "category": "University Services"
-    },
-	
-	
-	
+		
 	{
       "name": "College of Agriculture & Life Sciences Student Council",
       "subtitle": "Earth matters!",
