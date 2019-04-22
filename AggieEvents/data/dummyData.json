@@ -241,7 +241,206 @@
       },
       "meetingLocations": "Simpson Drill Field",
       "category": "Enthusiasts"
- }
-    
+ },
+    	{
+      "name": "Student Business Owners Association",
+      "subtitle": "It is all about business!",
+      "icon": "business",
+      "subscribed": false,
+      "description": "Our goal is to create a collaborative and inviting community as well as provide a close-knit peer network for student business owners.",
+      "contact": "Webbers6531@tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Academic-Business"
+    },
+	
+	
+	{
+      "name": "Student Business Owners Association",
+      "subtitle": "Liberal arts shape the world!",
+      "icon": "people",
+      "subscribed": false,
+      "description": "Liberal Arts Student Council (LASC) is an academic and professional organization that links Liberal Arts Students to their college.",
+      "contact": "liberalartsstudentcouncil@gmail.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Academic-Liberal Arts"
+    },
+	
+	{
+      "name": "Corps of Cadets",
+      "subtitle": "Fighting Texas Aggie Cadet Corps",
+      "icon": "flag",
+      "subscribed": false,
+      "description": "The Corps of Cadets develops well-educated leaders of character who are academically successful, embody the values of Honor, Integrity, Discipline and Selfless Service, and are fully prepared for the global challenges of leading in the 21st Century.",
+      "contact": "aggiecorps@corps.tamu.edu",
+      "yearFounded": "1876",
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Military"
+    },
+	
+	
+	{
+      "name": "Association of Former Students",
+      "subtitle": "Aggies connect!",
+      "icon": "home",
+      "subscribed": false,
+      "description": "The Association's mission includes promoting the welfare of Texas A&M University and serving the student body.",
+      "contact": "kmalone08@aggienetwork.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "University Services"
+    },
+	
+	{
+      "name": "College of Agriculture & Life Sciences Student Council",
+      "subtitle": "Earth matters!",
+      "icon": "ios-planet",
+      "subscribed": false,
+      "description": "The Texas A&M University College of Agriculture and Life Sciences Student Council unifies and serves our students by promoting, communication, encouraging personal development, and providing opportunities for social interaction in order to create leadership in Agriculture and the Life Sciences.",
+      "contact": "coalscouncil@gmail.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "University Services"
+    },
+	
+	
+	
+	{
+      "name": "College of Agriculture & Life Sciences Student Council",
+      "subtitle": "Earth matters!",
+      "icon": "ios-planet",
+      "subscribed": false,
+      "description": "The Texas A&M University College of Agriculture and Life Sciences Student Council unifies and serves our students by promoting, communication, encouraging personal development, and providing opportunities for social interaction in order to create leadership in Agriculture and the Life Sciences.",
+      "contact": "coalscouncil@gmail.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Academic-Architecture"
+    },
+	
+	
+	{
+      "name": "American Medical Student Association",
+      "subtitle": "What is more important than health?",
+      "icon": "ios-heart",
+      "subscribed": false,
+      "description": "Its purpose is to build relationships between medical students across the nation as well as within each chapter and to promote awareness of issues affecting medicine and medical students.",
+      "contact": null,
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Healthy Living"
+    },
+	
+	
+	{
+      "name": "The Distinguished Gentlemen's Club",
+      "subtitle": "Good manners take you long way in life.",
+      "icon": "power",
+      "subscribed": false,
+      "description": "This club focuses not only integration of key concepts of student success, but also components of transitioning. ",
+      "contact": null,
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Professional/Career"
+    },
+	
+	
+	{
+      "name": "Aggie Club of Engineers",
+      "subtitle": "Engineers shape the future.",
+      "icon": "people",
+      "subscribed": false,
+      "description": "Aggie Club of Engineers is a social, service, and leadership organization strongly rooted in academics. ",
+      "contact": "tamuacepresident@gmail.com",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Academic-Engineering"
+    },
+	
+	{
+      "name": "American Institute of Chemical Engineers",
+      "subtitle": "Chemical Engineering, the heartbeat of engineering...",
+      "icon": "card-travel",
+      "subscribed": false,
+      "description": "The Texas A&M University Student Chapter of AIChE is dedicated to providing members with experiences that go beyond the usual classroom education. ",
+      "contact": "president@aiche.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Academic-Engineering"
+    },
+	
+	{
+      "name": "MSC Hospitality",
+      "subtitle": "MSC is the home of the home of the 12th man.",
+      "icon": "ios-home",
+      "subscribed": false,
+      "description": "Established in 1970, MSC Hospitality has served as an ambassador program for Texas A&M for over 45 years. ",
+      "contact": "hospitality@msc.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Memorial Student Center"
+    },
+	
+	
+	
+	{
+      "name": "MSC Town Hall",
+      "subtitle": "Take your hats off in MSC for respect...",
+      "icon": "settings-power",
+      "subscribed": false,
+      "description": "MSC Town Hall is the concert programming committee on the Texas A&M campus. We are responsible for programming around forty events each school year.  ",
+      "contact": "townhall@msc.tamu.edu",
+      "yearFounded": null,
+      "dues": {
+        "year": 20,
+        "semester": 10
+      },
+      "meetingLocations": null,
+      "category": "Memorial Student Center"
+    }
   ]
 }
