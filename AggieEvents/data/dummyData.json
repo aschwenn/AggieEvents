@@ -311,7 +311,7 @@
 	{
       "name": "College of Agriculture & Life Sciences Student Council",
       "subtitle": "Earth matters!",
-      "icon": "ios-planet",
+      "icon": "settings-power",
       "subscribed": false,
       "description": "The Texas A&M University College of Agriculture and Life Sciences Student Council unifies and serves our students by promoting, communication, encouraging personal development, and providing opportunities for social interaction in order to create leadership in Agriculture and the Life Sciences.",
       "contact": "coalscouncil@gmail.com",
@@ -329,7 +329,7 @@
 	{
       "name": "College of Agriculture & Life Sciences Student Council",
       "subtitle": "Earth matters!",
-      "icon": "ios-planet",
+      "icon": "settings-power",
       "subscribed": false,
       "description": "The Texas A&M University College of Agriculture and Life Sciences Student Council unifies and serves our students by promoting, communication, encouraging personal development, and providing opportunities for social interaction in order to create leadership in Agriculture and the Life Sciences.",
       "contact": "coalscouncil@gmail.com",
@@ -346,7 +346,7 @@
 	{
       "name": "American Medical Student Association",
       "subtitle": "What is more important than health?",
-      "icon": "ios-heart",
+      "icon": "settings-power",
       "subscribed": false,
       "description": "Its purpose is to build relationships between medical students across the nation as well as within each chapter and to promote awareness of issues affecting medicine and medical students.",
       "contact": null,
@@ -412,7 +412,7 @@
 	{
       "name": "MSC Hospitality",
       "subtitle": "MSC is the home of the home of the 12th man.",
-      "icon": "ios-home",
+      "icon": "home",
       "subscribed": false,
       "description": "Established in 1970, MSC Hospitality has served as an ambassador program for Texas A&M for over 45 years. ",
       "contact": "hospitality@msc.tamu.edu",
