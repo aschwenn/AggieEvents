@@ -37,7 +37,7 @@
       "attributes": [
         "On campus"
       ],
-      "RSVP": "null"
+      "RSVP": null
     },
     {
       "name": "March Madness Final Watch Party",
@@ -76,23 +76,6 @@
         "Free food"
       ],
       "RSVP": "notGoing"
-    },
-    {
-      "name": "Junesfest",
-      "icon":"people",
-      "location": "Wehner Appt",
-      "host":"Business Council",
-      "startDate":"04-11-2019",
-      "startDayofWeek":4,
-      "endDate":"04-10-2019",
-      "endDayofWeek": 2,
-      "startTime":"1300",
-      "endTime": "1500",
-      "description": "Howdy folks! Junesfest is back and more Texan than ever!  Come on out for a big ole' heaping portion of food, games, and more! We can't predict the weather, but we can predict that fun will be had - the Maysfest way! So grab some friends and head over to Mays because you don't wanna miss the BEST STATE EVER!!! Whoops, we mean THE BEST DAY EVER!!!",
-      "going":23,
-      "interested":14,
-      "attributes": [ "Kid-friendly", "Free food" ],
-      "RSVP":"going"
     },
 { "name": "Zero Waste Earth Day Fundraiser", "icon":"info-outline", "location": "Rudder Plaza", "host":"Texas A&M Earth Sciences", "startDate":"04-22-2019", "startDayofWeek":1, "endDate":"04-24-2019","endDayofWeek": 3,"startTime":"2200","endTime": "1500","description": "Aggie Riveters First ever Earth Day Fundraising Event! Educational and practical knowledge to be shared on living a more zero waste lifestyle with Zero Waste starter kits available. There will be household items that are brand new from sustainable companies and a thrift store to encourage recycling of clothes.","going":53,"interested":14 , "attributes": [ "Fundraiser", "Planet Earth" ],"RSVP":null },
 { "name": "2019 Senior Dining Out", "icon":"flag", "location": "MSC Ballroom", "host":"Texas A&M Corps of Cadets", "startDate":"05-03-2019", "startDayofWeek":6, "endDate":"05-03-2019","endDayofWeek": 6,"startTime":"1730","endTime": "2100","description": "Everyone needs to RSVP. If you are not able to attend, please fill in all the information and note in the 'Comments' section the reason why you will not be able to join us.","going":458,"interested":0 ,  "attributes": [ "Senior Cadets Required", "Guests allowed" ],"RSVP":null },
@@ -159,22 +142,20 @@
     },
      {
       "name": "MSC L.T. Jordan Institute",
-      "subtitle": "We like Jordan!",
+      "subtitle": "We like MSC!",
       "icon": "computer",
       "subscribed": false,
       "description": "Knowledge of international cultures is more important to success than ever. MSC L.T. Jordan Institute members assist in promoting and coordinating programs designed to give Aggies a taste of other cultures--both on and off campus. Programs include international service, internship and research opportunities and on campus demonstrations and lectures.",
       "contact": "ji-chair@msc.tamu.edu",
       "yearFounded": null,
       "dues": {
-        "year": 20,
-        "semester": 10
       },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "MSC 252A",
+      "category": "Memorial Student Center"
  },
      {
       "name": "Professional Association for Industrial Distribution",
-      "subtitle": "We like Industrial Distribution!",
+      "subtitle": "I.D. is real engineering!",
       "icon": "computer",
       "subscribed": false,
       "description": "PAID is an organization for promoting student involvement with Industrial Distribution faculty and industry personnel. Student members organize and publicize business meetings, power lunches, social events, field trips, publications, and more to provide opportunities outside the classroom to enhance career skills.",
@@ -184,12 +165,12 @@
         "year": 20,
         "semester": 10
       },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "ZACH 334",
+      "category": "Academic-Engineering"
  },
      {
       "name": "Society of Petroleum Engineers (SPE)",
-      "subtitle": "We like Industrial Distribution!",
+      "subtitle": "Gig 'Em",
       "icon": "computer",
       "subscribed": false,
       "description": "To collect, disseminate, and exchange technical knowledge concerning the exploration, development and production of oil and gas resources, and related technologies for the public benefit and to provide opportunities for professionals to enhance their technical and professional competence. The dissemination of knowledge of the theory and practice of all aspects of petroleum engineering, and the furtherance of the professional development of the student member.",
@@ -199,23 +180,8 @@
         "year": 20,
         "semester": 10
       },
-      "meetingLocations": "null 113",
-      "category": "null"
- },
- {
-      "name": "MSC Freshmen in Service and Hosting",
-      "subtitle": "We like Industrial Distribution!",
-      "icon": "computer",
-      "subscribed": false,
-      "description": "If you're interested in providing service to campus, then MSC Freshmen in Service and Hosting (FISH) is the Freshmen Leadership Organization for you. FISH members learn about leadership by organizing and participating in service projects on campus and in the community. FISH's most notable program is Kyle Field Day, which is a one day event that provides citizens of Bryan and College Station and the students of Texas A&M a chance to have fun on Kyle Field and enjoy food and live music while actively engaging in service and seeking continued involvement in the community.",
-      "contact": "null",
-      "yearFounded": null,
-      "dues": {
-        "year": 20,
-        "semester": 10
-      },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "ZACH 445C",
+      "category": "Academic-Engineering"
  },
  {
       "name": "MSC Freshmen in Service and Hosting",
@@ -223,60 +189,58 @@
       "icon": "computer",
       "subscribed": false,
       "description": "If you're interested in providing service to campus, then MSC Freshmen in Service and Hosting (FISH) is the Freshmen Leadership Organization for you. FISH members learn about leadership by organizing and participating in service projects on campus and in the community. FISH's most notable program is Kyle Field Day, which is a one day event that provides citizens of Bryan and College Station and the students of Texas A&M a chance to have fun on Kyle Field and enjoy food and live music while actively engaging in service and seeking continued involvement in the community.",
-      "contact": "null",
+      "contact": null,
       "yearFounded": null,
       "dues": {
         "year": 20,
         "semester": 10
       },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "MSC Flag Room",
+      "category": "Memorial Student Center"
  },
  {
       "name": "Phi Lota Alpha",
-      "subtitle": "We like MSC!",
-      "icon": "computer",
+      "subtitle": "Latino Fraternity",
+      "icon": "people",
       "subscribed": false,
       "description": "Phi Iota Alpha Fraternity, Inc., established December 26, 1931 is the Oldest Latino Fraternity in Existence. The brotherhood is composed of undergraduate, graduate, and professional men internationally. Brothers of the organization commit themselves toward the empowerment of the Latino community by providing intensive social and cultural programs and activities geared toward the appreciation, promotion and preservation of Latin American culture. Membership in Phi Iota Alpha is open to all men regardless of race, creed, color, or national origin.",
       "contact": "tamuphiotas@spsj1931.com",
-      "yearFounded": null,
+      "yearFounded": "1931",
       "dues": {
         "year": 20,
         "semester": 10
       },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "Phi Lota Alpha House",
+      "category": "Greek Life"
  },
-
  {
       "name": "Student Business Owners Association",
-      "subtitle": "We like SBSA!",
-      "icon": "computer",
+      "subtitle": "Student Entreprenuers",
+      "icon": "people",
       "subscribed": false,
       "description": "Our goal is to create a collaborative and inviting community as well as provide a close-knit peer network for student business owners.",
-      "contact": "null",
+      "contact": null,
       "yearFounded": null,
       "dues": {
-        "year": 20,
-        "semester": 10
+        "year": 60
       },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "Rudder 440",
+      "category": "Professional/Career"
  },
  {
       "name": "Wildlife Warriors",
-      "subtitle": "We like WildLife!",
-      "icon": "computer",
+      "subtitle": "Outdoors and Animals",
+      "icon": "cloud",
       "subscribed": false,
       "description": "To serve as a technical organization for students with a genuine interest in wildlife and fisheries sciences. Society events and meetings encourage communication between members, nonmembers,and professionals to create an atmosphere where understanding of the resource management sciences can be improved. Our society takes the students' interests to heart and provides information and links to vital new opportunities involving wildlife conservation, research, and management.",
       "contact": "wildlife@listserv.tamu.edu",
       "yearFounded": null,
       "dues": {
-        "year": 20,
-        "semester": 10
+        "year": 70,
+        "semester": 40
       },
-      "meetingLocations": "null 113",
-      "category": "null"
+      "meetingLocations": "Simpson Drill Field",
+      "category": "Enthusiasts"
  }
     
   ]

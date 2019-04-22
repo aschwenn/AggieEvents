@@ -247,13 +247,22 @@ class Discover extends React.Component {
                   }
                   else {
                     // Show all events on a new page
-                    navigate('ShowAll', {
-                      list: this.state.fullDiscoverOrgs,
-                      type: 'orgs',
-                      details: {show: 'all'}
+                    if (this.state.category == 'All'){
+                      navigate('ShowAll', {
+                        list: (Master.WireframeMode)? DummyOrgs : this.getOrgs(),
+                        type: 'orgs',
+                        details: {show: 'all'}
                       });
                     }
-                  }}
+                    else {
+                      navigate('ShowAll', {
+                        list: this.state.fullDiscoverOrgs,
+                        type: 'orgs',
+                        details: {show: 'all'}
+                      });
+                    }
+                  }
+                }}
                 />
               </View>
 
@@ -370,8 +379,10 @@ export default class OrgsScreen extends React.Component {
           </View>
 
           <ScrollView>
+            <View style={{paddingBottom: '10%'}}>
               <SearchResults state={this.state} navigate={navigate}></SearchResults>
               <Discover state={this.state} navigate={navigate}></Discover>
+            </View>
           </ScrollView>
         </LinearGradient>
       </View>
@@ -394,7 +405,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 25,
     fontWeight: "bold",
-    paddingBottom: '2%'
+    paddingBottom: '2%',
+    height: 33
   },
 
 

@@ -18,15 +18,17 @@ export default class OrgList extends React.Component {
     if (!orgs) return (<View></View>);
 
     // Filter based on 'show'
-    if (show == 'subscribed') {
-      // Filter out orgs that the user isn't subscribed to
-      let filteredOrgs = [];
-      orgs.forEach((o, i) => {
-        if (o.subscribed) filteredOrgs.push(o);
-      });
-      orgs = filteredOrgs;
+    if (show) {
+      if (show == 'subscribed') {
+        // Filter out orgs that the user isn't subscribed to
+        let filteredOrgs = [];
+        orgs.forEach((o, i) => {
+          if (o.subscribed) filteredOrgs.push(o);
+        });
+        orgs = filteredOrgs;
+      }
+      // if show == 'all', do nothing
     }
-    // if show == 'all', do nothing
 
     return (
       orgs.map((l, i) => (
@@ -52,6 +54,7 @@ export default class OrgList extends React.Component {
               dues: l.dues,
               meetingLocations: l.meetingLocations,
               category: l.category,
+              navigate: {navigate}
             });
           }}
 

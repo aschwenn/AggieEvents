@@ -10,6 +10,8 @@ import { LinearGradient } from 'expo';
 import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import Master from '../Master';
+import EventList from '../components/EventList';
+import { DummyEvents } from '../data/dummyData.json';
 
 export default class OrgDetails extends React.Component {
 
@@ -20,7 +22,30 @@ export default class OrgDetails extends React.Component {
         {borderColor: 'white', backgroundColor: Colors.lightGray} : {borderColor:'white'},
       text: (this.props.navigation.getParam('subscribed', false))? 'Unsubscribe' : 'Subscribe',
     },
-    subscribedStatus: this.props.navigation.getParam('subscribed', false)
+    subscribedStatus: this.props.navigation.getParam('subscribed', false),
+    events: []
+  }
+
+  componentWillMount(){
+    // Find all events with this org as the host
+    if (Master.WireframeMode){
+      const orgName = this.props.navigation.getParam('name',null);
+      if (!orgName) {
+        this.setState({events: []});
+      }
+      else {
+        let evs = [];
+        DummyEvents.forEach((e) => {
+          if (e.host == orgName) {
+            evs.push(e);
+          }
+        });
+        this.setState({events: evs});
+      }
+    }
+    else {
+      // Calls to the server
+    }
   }
 
   toggleSubscribe(){
@@ -77,7 +102,8 @@ export default class OrgDetails extends React.Component {
 
   render(){
     const { navigation } = this.props;
-    const orgName = navigation.getParam('name','missing attribute');
+    const navigate = navigation.getParam('navigate', null).navigate;
+    const orgName = navigation.getParam('name', 'missing attribute');
     const icon = navigation.getParam('icon', null);
     const description = navigation.getParam('description', 'missing attribute');
     const subtitle = navigation.getParam('subtitle', null);
@@ -99,71 +125,90 @@ export default class OrgDetails extends React.Component {
           bottom: 0,
          }}>
           <ScrollView style={styles.orgStyle}>
-            <Text /* Org Name */
-              style={styles.title}>
-              {orgName}
-            </Text>
-            {(subtitle)? <Text style={styles.subtitle}>{subtitle}</Text> : null}
-            <View /* Subscribe Button */
-              style={{
-                paddingTop: '2%',
-                paddingBottom: '2%',
-              }}>
-              <Button
-                title={this.state.subscribed.text}
-                type={this.state.subscribed.button}
-                titleStyle={styles.buttonTitle}
-                buttonStyle={this.state.subscribed.style}
-                containerStyle={{paddingRight: '3%'}}
-                onPress={() => {
-                  this.toggleSubscribe();
-                }}
-              />
-            </View>
-            {
-              this.renderDues()
-            }
-            {
-              (yearFounded)? 
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.subtitle2}>Year Founded: </Text>
-                <Text style={styles.dues}>{yearFounded}</Text>
-              </View>
-              : null
-            }
-            {
-              (meetingLocations)?
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.subtitle2}>Meeting Locations: </Text>
-                <Text style={styles.dues}>{meetingLocations}</Text>
-              </View>
-              : null
-            }
-            {
-              (category)?
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.subtitle2}>Category: </Text>
-                <Text style={styles.dues}>{category}</Text>
-              </View>
-              : null
-            }
-            <View /* Description */>
-              <Text style={styles.subtitle}>About</Text>
-              <Text style={styles.description}>
-                {description}
+            <View style={{paddingBottom: 50}}>
+              <Text /* Org Name */
+                style={styles.title}>
+                {orgName}
               </Text>
-            </View>
-            {
-              (contact)?
-              <View>
-                <Text style={styles.subtitle}>Contact Information</Text>
-                <View style={{flexDirection: 'row'}}>
-                  <Text style={styles.subtitle4}>Email: </Text>
-                  <Text style={styles.contact}>{contact}</Text>
-                </View>
+              {(subtitle)? <Text style={styles.subtitle}>{subtitle}</Text> : null}
+              <View /* Subscribe Button */
+                style={{
+                  paddingTop: '2%',
+                  paddingBottom: '0%',
+                }}>
+                <Button
+                  title={this.state.subscribed.text}
+                  type={this.state.subscribed.button}
+                  titleStyle={styles.buttonTitle}
+                  buttonStyle={this.state.subscribed.style}
+                  containerStyle={{paddingRight: '3%'}}
+                  onPress={() => {
+                    this.toggleSubscribe();
+                  }}
+                />
               </View>
-              : null
-            }
+              {
+                this.renderDues()
+              }
+              {
+                (yearFounded)? 
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.subtitle2}>Year Founded: </Text>
+                  <Text style={styles.dues}>{yearFounded}</Text>
+                </View>
+                : null
+              }
+              {
+                (meetingLocations)?
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.subtitle2}>Meeting Locations: </Text>
+                  <Text style={styles.dues}>{meetingLocations}</Text>
+                </View>
+                : null
+              }
+              {
+                (category)?
+                <View style={{flexDirection: 'row'}}>
+                  <Text style={styles.subtitle2}>Category: </Text>
+                  <Text style={styles.dues}>{category}</Text>
+                </View>
+                : null
+              }
+              <View /* Description */>
+                <Text style={styles.subtitle}>About</Text>
+                <Text style={styles.description}>
+                  {description}
+                </Text>
+              </View>
+              {
+                (contact)?
+                <View>
+                  <Text style={styles.subtitle}>Contact Information</Text>
+                  <View style={{flexDirection: 'row'}}>
+                    <Text style={styles.subtitle4}>Email: </Text>
+                    <Text style={styles.contact}>{contact}</Text>
+                  </View>
+                </View>
+                : null
+              }
+              <View /* Upcoming Events */
+                style={{
+                  paddingTop: '3%'
+                }}>
+                <Text style={styles.subtitle5}>Upcoming Events</Text>
+                {
+                  (this.state.events.length == 0)?
+                  <Text style={styles.subtitle4}>There aren't any events scheduled.</Text>
+
+                  :
+
+                  <EventList
+                    navigate={navigate}
+                    events={this.state.events}
+                  />
+                }
+              </View>
+            </View>
           </ScrollView>
         </LinearGradient>
       </View>
@@ -194,6 +239,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     textAlign: 'left',
+    paddingTop: '2%',
+    paddingBottom: '2%',
+    flex: 1,
+  },
+  subtitle5: {
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
     paddingTop: '2%',
     paddingBottom: '2%',
     flex: 1,
