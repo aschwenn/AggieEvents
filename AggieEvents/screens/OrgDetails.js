@@ -147,9 +147,11 @@ export default class OrgDetails extends React.Component {
                   }}
                 />
               </View>
-              {
-                this.renderDues()
-              }
+              <View style={{ paddingTop: '2%' }}>
+                {
+                  this.renderDues()
+                }
+              </View>
               {
                 (yearFounded)? 
                 <View style={{flexDirection: 'row'}}>

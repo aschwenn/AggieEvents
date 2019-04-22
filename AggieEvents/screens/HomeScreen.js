@@ -50,11 +50,11 @@ export default class HomeScreen extends React.Component {
   };
 
   state = {
-    upcomingEvents: (Master.WireframeMode)? DummyEvents.slice(0,Master.DefaultListShow) : this.getEvents().slice(0,Master.DefaultListShow),
-    myOrgs: (Master.WireframeMode)? DummyOrgs.slice(0,Master.DefaultListShow) : this.getOrgs().slice(0,Master.DefaultListShow),
+    upcomingEvents: (Master.WireframeMode)? this.getDummyEventsUpcoming().slice(0,Master.DefaultListShow) : this.getEvents().slice(0,Master.DefaultListShow),
+    myOrgs: (Master.WireframeMode)? this.getDummyOrgsSubscribed(Master.DefaultListShow) : this.getOrgs().slice(0,Master.DefaultListShow),
     eventShow: 'Show more',
     orgShow: 'Show more',
-    eventNo: (Master.WireframeMode)? DummyEvents.length : this.getEvents().length,
+    eventNo: (Master.WireframeMode)? this.getDummyEventsUpcoming().length : this.getEvents().length,
     orgNo: (Master.WireframeMode)? this.getDummyOrgLength() : this.getOrgs().length,
   };
 
@@ -83,6 +83,24 @@ export default class HomeScreen extends React.Component {
     });
   }
 
+  getDummyEventsUpcoming(){
+    let ev = [];
+    DummyEvents.forEach((e) => {
+      if (this.wireFrameIsSubscribed(e.host)) ev.push(e);
+    });
+    return ev;
+  }
+
+  wireFrameIsSubscribed(orgName){
+    // Determine if user is subscribed to an org in wireframe mode
+    for (let i = 0; i < DummyOrgs.length; i++){
+      if (DummyOrgs[i].name == orgName){
+        return DummyOrgs[i].subscribed;
+      }
+    }
+    return false;
+  }
+
   getOrgs(){
     // Make api call for orgs
     return [];
@@ -97,12 +115,28 @@ export default class HomeScreen extends React.Component {
     return count;
   }
 
-  getDummyOrgsSubscribed() {
-    let orgs = [];
-    DummyOrgs.forEach((o) => {
-      if (o.subscribed) orgs.push(o);
-    });
-    return orgs;
+  getDummyOrgsSubscribed(num = 0) {
+    if (num == 0){
+      let orgs = [];
+      DummyOrgs.forEach((o) => {
+        if (o.subscribed) orgs.push(o);
+      });
+      return orgs;
+    }
+    else{
+      let orgs = [];
+      let count = 0;
+      for (var i = 0; i < DummyOrgs.length; i++){
+        if (DummyOrgs[i].subscribed) {
+          orgs.push(DummyOrgs[i]);
+          count += 1;
+          if (count == num) {
+            break;
+          }
+        }
+      }
+      return orgs;
+    }
   }
 
   showError(err){
@@ -163,7 +197,7 @@ export default class HomeScreen extends React.Component {
                       if (this.state.eventShow == 'Show more'){
                         // Show 3 more events
                         let st = this.state;
-                        st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,(Master.DefaultListShow * 2)) : this.getEvents().slice(0,(Master.DefaultListShow * 2));
+                        st.upcomingEvents = (Master.WireframeMode)? this.getDummyEventsUpcoming().slice(0,Master.DefaultListShow * 2) : this.getEvents().slice(0,(Master.DefaultListShow * 2));
                         st.eventShow = 'Show all'
                         this.setState(st);
                       }
@@ -212,7 +246,7 @@ export default class HomeScreen extends React.Component {
                       if (this.state.orgShow == 'Show more'){
                         // Show 3 more events
                         let st = this.state;
-                        st.myOrgs = (Master.WireframeMode)? this.getDummyOrgsSubscribed().slice(0,(Master.DefaultListShow * 2)) : this.getOrgs().slice(0,(Master.DefaultListShow * 2));
+                        st.myOrgs = (Master.WireframeMode)? this.getDummyOrgsSubscribed(Master.DefaultListShow * 2) : this.getOrgs().slice(0,(Master.DefaultListShow * 2));
                         st.orgShow = 'Show all'
                         this.setState(st);
                         console.log(this.state.myOrgs);
