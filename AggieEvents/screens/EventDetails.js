@@ -5,11 +5,14 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableHighlight,
+  Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import { Button, Icon, Divider } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import Master from '../Master';
+import { DummyOrgs } from '../data/dummyData.json'
 
 class DateTime extends React.Component {
     formatTime(time){
@@ -260,8 +263,23 @@ export default class EventDetails extends React.Component {
         }
     }
 
+    getOrg(orgName) {
+        if (Master.WireframeMode){
+            let temp = null;
+            DummyOrgs.forEach((o) => {
+                if (o.name == orgName) temp = o;
+            });
+            return temp;
+        }
+        else {
+            // Make server call
+            return null;
+        }
+    }
+
     render() {
         const { navigation } = this.props;
+        const navigate = navigation.getParam('navigate', null).navigate;
         const eventName = navigation.getParam('eventName','missing attribute');
         const host = navigation.getParam('host','missing attribute');
         const location = navigation.getParam('location','missing attribute');
@@ -299,10 +317,40 @@ export default class EventDetails extends React.Component {
                                     //flexWrap: 'wrap',
                                 }}>
                                 <Text style={styles.subtitle}>Hosted by </Text>
-                                <Text style={styles.host}
-                                    numberOfLines={1}
-                                    ellipsizeMode='tail'
-                                >{host}</Text>
+                                <TouchableHighlight onPress={() => {
+                                    let l = this.getOrg(host);
+                                    if (l){
+                                        navigate('Org', {
+                                            name: l.name,
+                                            icon: l.icon,
+                                            description: l.description,
+                                            subscribed: l.subscribed,
+                                            subtitle: l.subtitle,
+                                            contact: l.contact,
+                                            yearFounded: l.yearFounded,
+                                            dues: l.dues,
+                                            meetingLocations: l.meetingLocations,
+                                            category: l.category,
+                                            navigate: {navigate}
+                                        });
+                                    }
+                                    else {
+                                        // Put alert
+                                        Alert.alert(
+                                            'Organization not found',
+                                            'This organization\'s profile has not been created yet.',
+                                            [
+                                              {text: 'OK'}
+                                            ],
+                                            {cancelable: false},
+                                        );
+                                    }
+                                }}>
+                                    <Text style={styles.host}
+                                        numberOfLines={1}
+                                        ellipsizeMode='tail'
+                                    >{host}</Text>
+                                </TouchableHighlight>
                             </View>
                             <DateTime /* Date and time of event */
                                 startDate={startDate}

@@ -61,7 +61,8 @@ export default class EventList extends React.Component {
               going: l.going,
               interested: l.interested,
               attributes: l.attributes,
-              RSVP: l.RSVP
+              RSVP: l.RSVP,
+              navigate: {navigate}
             });
           }}
           //badge={{value:null}}
