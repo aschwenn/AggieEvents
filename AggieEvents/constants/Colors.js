@@ -23,4 +23,5 @@ export default {
   maybeButton: '#ff9933',
   notGoingButton: '#808080',
   notGoingButton2: '#ff3333',
+  managedEvent: '#0099ff',
 };

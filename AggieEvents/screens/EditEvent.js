@@ -7,9 +7,12 @@ import {
   Text,
   DatePickerIOS,
   Dimensions,
+  Alert,
+  TouchableHighlight,
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import Colors from '../constants/Colors';
+import Master from '../Master';
 
 export default class EditEvent extends React.Component {
   static navigationOptions = {
@@ -44,14 +47,12 @@ export default class EditEvent extends React.Component {
   }
 
   formatTimeString(date) {
-    console.log(date.toString());
     let min;
     if (date.getMinutes() < 10) min = '0' + date.getMinutes().toString();
     else min = date.getMinutes().toString();
     let hour;
     if (date.getHours() < 10) hour = '0' + date.getHours().toString();
     else hour = date.getHours().toString();
-    console.log(hour + min);
     return '' + hour + min;
   }
 
@@ -84,11 +85,38 @@ export default class EditEvent extends React.Component {
     return d;
   }
 
+  cancelChanges(){
+    Alert.alert(
+      'Cancel changes',
+      'Are you sure you want to continue?',
+      [
+        {text: 'No', style: 'cancel'},
+        {text: 'Yes', onPress: () => this.props.navigation.goBack()}
+      ],
+      {cancelable: false},
+    );
+  }
+
+  submitChanges(){
+    if (Master.WireframeMode){
+      Alert.alert(
+        'Changes submitted',
+        'Updated event "' + this.state.title + '"',
+        [
+          {text: 'OK', onPress: () => this.props.navigation.goBack()}
+        ],
+        {cancelable: false},
+      );
+    }
+    else {
+      // Make database call
+    }
+  }
+
   render(){
     var dim = Dimensions.get('window');
     this.height = dim.height;
     this.width = dim.width;
-    console.log(this.width);
     
     return (
       <View style={styles.container}>
@@ -103,7 +131,7 @@ export default class EditEvent extends React.Component {
           bottom: 0,
         }}>
           <ScrollView style={styles.eventStyle}>
-            <View style={{paddingBottom: 250}}>
+            <View style={{paddingBottom: 160}}>
               <View style={styles.editChunk}>
                 <Text style={styles.title}>Event Title</Text>
                 <TextInput
@@ -174,6 +202,24 @@ export default class EditEvent extends React.Component {
                   numberOfLines = {5}
                 />
               </View>
+              <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
+                <View style={{padding:'5%'}}>
+                  <TouchableHighlight
+                    style={styles.editButton}
+                    onPress={() => this.cancelChanges()}
+                  >
+                    <Text style={styles.editButtonTitle}>Cancel</Text>
+                  </TouchableHighlight>
+                </View>
+                <View style={{padding:'5%'}}>
+                  <TouchableHighlight
+                    style={styles.editButton}
+                    onPress={() => this.submitChanges()}
+                  >
+                    <Text style={styles.editButtonTitle}>Submit</Text>
+                  </TouchableHighlight>
+                </View>
+              </View>
             </View>
           </ScrollView>
         </LinearGradient>
@@ -219,7 +265,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'rgba(255,255,255,1)',
     padding: 10,
-    fontSize: 20,
+    fontSize: 16,
     textAlign: 'left',
     width: (this.width - (this.width * 0.14)),
     textAlignVertical: 'top',
@@ -232,4 +278,21 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(0,0,0,0.8)',
     borderWidth: 2,
   },
+  editButtonTitle: {
+    color: 'white',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    fontSize: 20,
+    padding: '2%'
+  },
+  editButton: {
+    paddingRight: '5%',
+    paddingBottom: '5%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'white',
+    borderRadius: 10,
+    padding: '3%'
+  }
 });

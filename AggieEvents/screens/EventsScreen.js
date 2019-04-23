@@ -289,7 +289,13 @@ export default class EventsScreen extends React.Component {
             <View style={{paddingBottom: '10%'}}>
               <SearchResults state={this.state} navigate={navigate}></SearchResults>
               <Discover state={this.state} navigate={navigate}></Discover>
-              <EventAdmin navigate={navigate}></EventAdmin>
+              {
+                (this.state.search == '')?
+                
+                <EventAdmin navigate={navigate}></EventAdmin>
+
+                : null
+              }
             </View>
           </ScrollView>
         </LinearGradient>

@@ -2,8 +2,25 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import Colors from '../constants/Colors';
 import { ListItem } from 'react-native-elements';
+import Master from '../Master';
+import { DummyOrgs } from '../data/dummyData.json';
 
 export default class EventList extends React.Component {
+
+  isManagedByUser(host) {
+    if (Master.WireframeMode){
+      for (let i = 0; i < DummyOrgs.length; i++){
+        if (DummyOrgs[i].name == host){
+          if (DummyOrgs[i].manage) return true;
+          return false;
+        }
+      }
+      return false;
+    }
+    else {
+      // Make server calls
+    }
+  }
 
   render() {
     const navigate = this.props.navigate;
@@ -28,6 +45,10 @@ export default class EventList extends React.Component {
       }
       else {
         e.iconColor = null;
+      }
+      if (this.isManagedByUser(e.host)){
+        e.icon = 'build';
+        e.iconColor = Colors.managedEvent;
       }
       newEvents.push(e);
     });
