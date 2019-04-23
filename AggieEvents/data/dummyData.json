@@ -91,8 +91,8 @@
 { "name": "Senior Appreciation Dinner", "icon":"party-mode", "location": "Texas A&M University", "host":"Texas A&M University", "startDate":"05-01-2019", "startDayofWeek":3, "endDate":"05-01-2019","endDayofWeek": 3,"startTime":"1830","endTime": "2030","description": "Thank you for everything you have done for this university! You have come a long way, seniors!","going":382,"interested":342 ,  "attributes": [ "Dinner", "Seniors" ],"RSVP":null },
 { "name": "Mind Unwind 5K", "icon":"directions-run", "location": "Wolf Pen Creek Park", "host":"Society of Petroleum Engineers (SPE)", "startDate":"04-27-2019", "startDayofWeek":6, "endDate":"04-27-2019","endDayofWeek": 6,"startTime":"0900","endTime": "1230","description": "On behalf of the Society of Petroleum Engineers (SPE), the American Association of Drilling Engineers (AADE), Pi Epsilon Tau (Petroleum Engineering Honor Society), and the International Association of Drilling Contractors (IADC), or collectively PETE Orgs, it is with great excitement that we announce the first annual Mind Unwind 5K Festival! This initiative combines the philanthropy committees of PETE Orgs in a fundraiser for the sole benefit of United Way of the Brazos Valley. Unwind your mind and join us for a fun walk/run with food, games, and prizes!","going":24,"interested":14 ,  "attributes": [ "Fun run", "Sports" ],"RSVP":null },
 { "name": "Kyle Field Day", "icon":"donut-small", "location": "Kyle Field", "host":"MSC Freshmen in Service and Hosting", "startDate":"04-27-2019", "startDayofWeek":6, "endDate":"04-27-2019","endDayofWeek": 6,"startTime":"1100","endTime": "1500","description": "Kyle Field Day is a one day service event held outside of and in the concourse of Kyle Field. The mission of Kyle Field Day is to connect Texas A&M students and the Bryan/College Station community with service organizations from on and off campus and to complete impactful, hands-on service projects for the missions of the organizations. With thousands of participants and 40-plus service booths, Kyle Field Day has a widespread impact. In addition to this, Kyle Field Day serves as a tool to develop our freshmen members of MSC FISH professionally through planning the many facets of the event and hosting it. We hope to inspire our members as well as the community to serve, not only at Kyle Field Day, but throughout the year.","going":32,"interested":42 ,  "attributes": [ "Free-Stuff", "Open-Event" ],"RSVP":null },
-{ "name": "Noche De Gala", "icon":"cloud", "location": "Alquimia Night Club", "host":"Phi Lota Alpha", "startDate":"04-25-2019", "startDayofWeek":4, "endDate":"04-26-2019","endDayofWeek": 5,"startTime":"1030","endTime": "1200","description": "Noche De Gala will be a cultural/Fundraiser event hosted by Phi Iota Alpha at Alquimia Night club. A percentage of proceeds from ticket sales will go to our \"Leones Scholarship\" and to our philanthropy National Hispanic Institution.","going":33,"interested":8 ,  "attributes": [ "Spanish", "Night" ],"RSVP":null }
- 
+{ "name": "Noche De Gala", "icon":"cloud", "location": "Alquimia Night Club", "host":"Phi Lota Alpha", "startDate":"04-25-2019", "startDayofWeek":4, "endDate":"04-26-2019","endDayofWeek": 5,"startTime":"1030","endTime": "1200","description": "Noche De Gala will be a cultural/Fundraiser event hosted by Phi Iota Alpha at Alquimia Night club. A percentage of proceeds from ticket sales will go to our \"Leones Scholarship\" and to our philanthropy National Hispanic Institution.","going":33,"interested":8 ,  "attributes": [ "Spanish", "Night" ],"RSVP":null },
+{ "name": "Prototyping Workshop", "icon":"computer", "location":"HRBB 113", "host":"Computer-Human Interaction Club", "startDate":"04-29-2019", "startDayofWeek": 1, "endDate":"04-29-2019","endDayofWeek":1,"startTime":"1900","endTime":"2100","description":"Howdy! We'll be having a prototyping workshop taught by Dr. Moore! Learn the importance of prototyping and how to create low- and high-fidelity prototypes.","going":23,"interested":15,"attributes":["Free food"],"RSVP":null}
   ],
   "DummyOrgs": [
     {
@@ -377,7 +377,7 @@
 	
 	{
       "name": "American Institute of Chemical Engineers",
-      "subtitle": "Chemical Engineering, the heartbeat of engineering...",
+      "subtitle": "Chemical Engineering...",
       "icon": "card-travel",
       "subscribed": false,
       "description": "The Texas A&M University Student Chapter of AIChE is dedicated to providing members with experiences that go beyond the usual classroom education. ",
@@ -423,6 +423,22 @@
       },
       "meetingLocations": null,
       "category": "Memorial Student Center"
+    },
+
+    {
+      "name": "Computer-Human Interaction Club",
+      "subtitle": "We design with the mind in mind",
+      "icon": "fingerprint",
+      "subscribed": true,
+      "description": "This club was started by students of Dr. Moore's CSCE 436 class. We focus on interface design, evaluation of interaction prototypes, and consult other organizations on their interaction designs.",
+      "contact": "chi-president@cse.tamu.edu",
+      "yearFounded": "2019",
+      "dues": {
+        "year": 30
+      },
+      "meetingLocations": "HRBB 113",
+      "category": "Academic-Engineering",
+      "manage": true
     }
   ]
 }

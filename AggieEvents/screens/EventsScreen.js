@@ -9,7 +9,7 @@ import { LinearGradient } from 'expo';
 import { Button, Icon } from 'react-native-elements';
 import Colors from '../constants/Colors';
 import { SearchBar } from 'react-native-elements';
-import { DummyEvents } from '../data/dummyData.json';
+import { DummyEvents, DummyOrgs } from '../data/dummyData.json';
 import EventList from '../components/EventList';
 import Master from '../Master';
 import Searchable from '../components/Searchable';
@@ -72,14 +72,6 @@ class Discover extends React.Component {
   render() {
     const navigate = this.props.navigate;
 
-    discoverEvents = [];
-    if (Master.WireframeMode){
-      discoverEvents = DummyEvents;
-    }
-    else {
-      // Query the database
-    }
-
     // Show Discover element only if user is not currently searching
     if (this.props.state.search != ''){
       return null;
@@ -138,6 +130,56 @@ class Discover extends React.Component {
       )
     }
   }
+}
+
+class EventAdmin extends React.Component {
+
+  state = {
+    managedEvents: this.getManagedEvents()
+  }
+
+  getManagedEvents() {
+    if (Master.WireframeMode){
+      // Get all events hosted by organizations the user manages
+
+      // Find orgs managed by the user
+      let myOrgs = []; // list of org names
+      DummyOrgs.forEach((o) => {
+        if (o.manage) myOrgs.push(o.name);
+      });
+
+      let myEvents = [];
+      DummyEvents.forEach((e) => {
+        if (myOrgs.includes(e.host)) myEvents.push(e);
+      });
+
+      return myEvents;
+    }
+    else {
+      // Make api call
+      return [];
+    }
+  }
+
+  render() {
+    const navigate = this.props.navigate;
+    
+    return (
+      <View>
+        <View style={styles.discover}>
+          <Text style={styles.discoverText}>
+            Events I'm Hosting
+          </Text>
+        </View>
+
+        <EventList
+          events={this.state.managedEvents}
+          navigate={navigate}
+        ></EventList>
+      </View>
+    );
+  }
+
 }
 
 export default class EventsScreen extends React.Component {
@@ -247,6 +289,7 @@ export default class EventsScreen extends React.Component {
             <View style={{paddingBottom: '10%'}}>
               <SearchResults state={this.state} navigate={navigate}></SearchResults>
               <Discover state={this.state} navigate={navigate}></Discover>
+              <EventAdmin navigate={navigate}></EventAdmin>
             </View>
           </ScrollView>
         </LinearGradient>

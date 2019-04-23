@@ -185,6 +185,8 @@ export default class EventDetails extends React.Component {
         }
     }
 
+    hosting = false;
+
     going = () => {
         this.setState({
             going: {
@@ -277,6 +279,21 @@ export default class EventDetails extends React.Component {
         }
     }
 
+    isHosting(host){
+        if (Master.WireframeMode){
+            for (let i = 0; i < DummyOrgs.length; i++){
+                if (DummyOrgs[i].name == host){
+                    if (DummyOrgs[i].manage) return true;
+                    return false;
+                }
+            }
+            return false;
+        }
+        else {
+            // Make api call
+        }
+    }
+
     render() {
         const { navigation } = this.props;
         const navigate = navigation.getParam('navigate', null).navigate;
@@ -291,7 +308,8 @@ export default class EventDetails extends React.Component {
         const endDayofWeek = navigation.getParam('endDayofWeek', 'missing attribute');
         const description = navigation.getParam('description', 'missing attribute');
         const attributes = navigation.getParam('attributes', 'missing attribute');
-        //const RSVP = navigation.getParam('RSVP', 'null');
+
+        let hosting = this.isHosting(host);
 
         return (
             <View style={styles.container}>
@@ -307,6 +325,39 @@ export default class EventDetails extends React.Component {
                     }}>
                     <ScrollView style={styles.eventStyle}>
                         <View style={{paddingBottom: 50}}>
+                            {
+                                (hosting)?
+                                <Button
+                                    icon={
+                                        <Icon
+                                            name='build'
+                                            size={15}
+                                            color='white'
+                                        />
+                                    }
+                                    title='Edit event details'
+                                    type='outline'
+                                    titleStyle={styles.editButtonTitle}
+                                    buttonStyle={{borderColor:'white'}}
+                                    containerStyle={{paddingRight: '3%', paddingBottom: '3%'}}
+                                    onPress={() => {
+                                        navigate('EditEvent', {
+                                           navigate: {navigate},
+                                           eventName: {eventName},
+                                           location: {location},
+                                           startDate: {startDate},
+                                           endDate: {endDate},
+                                           startTime: {startTime},
+                                           endTime: {endTime},
+                                           startDayofWeek: {startDayofWeek},
+                                           endDayofWeek: {endDayofWeek},
+                                           description: {description},
+                                           attributes: {attributes}
+                                        });
+                                    }}
+                                />
+                                : null
+                            }
                             <Text /* Event Name */
                                 style={styles.title}>
                                 {eventName}
@@ -558,6 +609,11 @@ const styles = StyleSheet.create({
     rsvpButtonTitle: {
         color: 'white',
         paddingLeft: 4,
+        paddingBottom: '2%',
+    },
+    editButtonTitle: {
+        color: 'white',
+        paddingLeft: 10,
         paddingBottom: '2%',
     },
     attendees: {

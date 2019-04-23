@@ -14,6 +14,12 @@ import EventList from '../components/EventList';
 import { DummyEvents } from '../data/dummyData.json';
 
 export default class OrgDetails extends React.Component {
+  static navigationOptions = {
+    title: 'Organization Details',
+    headerStyle: {
+        backgroundColor: Colors.tabBar,
+    },
+  };
 
   state = {
     subscribed: {

@@ -10,6 +10,7 @@ import EventDetails from '../screens/EventDetails';
 import OrgDetails from '../screens/OrgDetails';
 import SettingsScreen from '../screens/SettingsScreen';
 import ShowAll from '../screens/ShowAll';
+import EditEvent from '../screens/EditEvent';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -17,6 +18,7 @@ const HomeStack = createStackNavigator({
   Org: OrgDetails,
   Settings: SettingsScreen,
   ShowAll: ShowAll,
+  EditEvent: EditEvent
 });
 
 HomeStack.navigationOptions = {
@@ -45,6 +47,7 @@ const EventsStack = createStackNavigator({
   Org: OrgDetails,
   Settings: SettingsScreen,
   ShowAll: ShowAll,
+  EditEvent: EditEvent
 });
 
 EventsStack.navigationOptions = {
@@ -69,6 +72,7 @@ const OrgsStack = createStackNavigator({
   Event: EventDetails,
   Settings: SettingsScreen,
   ShowAll: ShowAll,
+  EditEvent: EditEvent
 });
 
 OrgsStack.navigationOptions = {
