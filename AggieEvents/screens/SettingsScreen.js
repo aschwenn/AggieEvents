@@ -45,7 +45,7 @@ export default class SettingsScreen extends React.Component {
     return 'Offline...';
   }
 
-  componentWillMount() {
+  componentDidMount() {
     console.log("\n\nRequesting data...");
     this.isOnline().then((res) => {
       let st = this.state;

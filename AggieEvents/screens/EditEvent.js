@@ -117,6 +117,7 @@ export default class EditEvent extends React.Component {
     var dim = Dimensions.get('window');
     this.height = dim.height;
     this.width = dim.width;
+    console.log(this.height);
     
     return (
       <View style={styles.container}>
@@ -249,6 +250,7 @@ const styles = StyleSheet.create({
   },
   editChunk: {
     paddingBottom: '3%',
+    width: (this.width - (this.width * 0.14)),
   },
   textInput: {
     borderColor: 'rgba(0,0,0,0.8)',

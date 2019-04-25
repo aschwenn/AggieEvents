@@ -86,46 +86,46 @@ class Discover extends React.Component {
           </View>
 
           <EventList
-                events={this.state.upcomingEvents}
-                navigate={navigate}
-              ></EventList>
+            events={this.state.upcomingEvents}
+            navigate={navigate}
+          ></EventList>
 
-              {((this.state.eventShow == 'Show more' &&
-                this.state.eventNo > Master.DefaultListShow) ||
-                this.state.eventShow == 'Show all' &&
-                this.state.eventNo > (Master.DefaultListShow * 2)) ?
+          {((this.state.eventShow == 'Show more' &&
+            this.state.eventNo > Master.DefaultListShow) ||
+            this.state.eventShow == 'Show all' &&
+            this.state.eventNo > (Master.DefaultListShow * 2)) ?
 
-                <View style={{
-                    paddingLeft: '30%',
-                    paddingRight: '30%',
-                    paddingTop: '2%',
-                    paddingBottom: '2%'}}>
-                  <Button 
-                    title={this.state.eventShow}
-                    type='outline'
-                    titleStyle={{color: 'rgba(255,255,255,0.9)', padding: 0}}
-                    buttonStyle={styles.button}
-                    onPress={() => {
-                      if (this.state.eventShow == 'Show more'){
-                        // Show 3 more events
-                        let st = this.state;
-                        st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,(Master.DefaultListShow * 2)) : this.getEvents().slice(0,(Master.DefaultListShow * 2));
-                        st.eventShow = 'Show all'
-                        this.setState(st);
-                      }
-                      else {
-                        // Show all events on a new page
-                        navigate('ShowAll', {
-                          list: (Master.WireframeMode)? DummyEvents : this.getEvents(),
-                          type: 'events',
-                          title: 'This Week',
-                        });
-                      }
-                    }}
-                  />
-                </View>
+            <View style={{
+              paddingLeft: '30%',
+              paddingRight: '30%',
+              paddingTop: '2%',
+              paddingBottom: '2%'}}>
+              <Button 
+                title={this.state.eventShow}
+                type='outline'
+                titleStyle={{color: 'rgba(255,255,255,0.9)', padding: 0}}
+                buttonStyle={styles.button}
+                onPress={() => {
+                  if (this.state.eventShow == 'Show more'){
+                    // Show 3 more events
+                    let st = this.state;
+                    st.upcomingEvents = (Master.WireframeMode)? DummyEvents.slice(0,(Master.DefaultListShow * 2)) : this.getEvents().slice(0,(Master.DefaultListShow * 2));
+                    st.eventShow = 'Show all'
+                    this.setState(st);
+                  }
+                  else {
+                    // Show all events on a new page
+                    navigate('ShowAll', {
+                      list: (Master.WireframeMode)? DummyEvents : this.getEvents(),
+                      type: 'events',
+                      title: 'This Week',
+                    });
+                  }
+                }}
+              />
+            </View>
 
-              : null}
+          : null}
         </View>
       )
     }
@@ -170,6 +170,33 @@ class EventAdmin extends React.Component {
           <Text style={styles.discoverText}>
             Events I'm Hosting
           </Text>
+          <Button
+            icon={
+              <Icon
+                name='add-circle-outline'
+                color='white'
+              />
+            }
+            buttonStyle={{
+              backgroundColor: 'transparent',
+              paddingBottom: '0%',
+            }}
+            onPress={() => {
+              navigate('EditEvent', {
+                navigate: {navigate},
+                eventName: {eventName: 'Campus Event'},
+                location: {location: 'ex. MSC 2501'},
+                startDate: {startDate: ''},
+                endDate: {endDate: ''},
+                startTime: {startTime: ''},
+                endTime: {endTime: ''},
+                startDayofWeek: {startDayofWeek: 0},
+                endDayofWeek: {endDayofWeek: 0},
+                description: {description: ''},
+                attributes: {attributes: []}
+              });
+            }}
+          />
         </View>
 
         <EventList
