@@ -4,7 +4,7 @@ This is the home of our Aggie Events high-fidelity design prototype intended to 
 The app was created in React Native, so it works on both iOS and Android devices. It can be tested as is by downloading NPM, cloning the repo and downloading all of the project dependencies, and running `expo start` or `npm start`. From there, one can test it on their own device by downloading the Expo Client app on the app store and scanning the QR code with their camera.
 
 #### Homescreen - the user's feed of events hosted by clubs that they're subscribed to
-![alt text](/images/IMG_7590.PNG)
+![alt text](/images/IMG_7590.PNG){:height="50%" width="50%"}
 
 #### Events
 ![alt text](/images/IMG_7591.PNG)
