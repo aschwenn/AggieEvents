@@ -4,21 +4,21 @@ This is the home of our Aggie Events high-fidelity design prototype intended to 
 The app was created in React Native, so it works on both iOS and Android devices. It can be tested as is by downloading NPM, cloning the repo and downloading all of the project dependencies, and running `expo start` or `npm start`. From there, one can test it on their own device by downloading the Expo Client app on the app store and scanning the QR code with their camera.
 
 #### Homescreen - the user's feed of events hosted by clubs that they're subscribed to
-<img src="/images/IMG_7590.PNG" height="1000">
+<img src="/images/IMG_7590.PNG" height="700">
 
 #### Events
-![alt text](/images/IMG_7591.PNG)
-![alt text](/images/IMG_7596.PNG)
-![alt text](/images/IMG_7595.PNG)
+<img src="/images/IMG_7591.PNG" height="700">
+<img src="/images/IMG_7596.PNG" height="700">
+<img src="/images/IMG_7595.PNG" height="700">
 
 ### Organizations
-![alt text](/images/IMG_7592.PNG)
-![alt text](/images/IMG_7593.PNG)
-![alt text](/images/IMG_7597.PNG)
+<img src="/images/IMG_7592.PNG" height="700">
+<img src="/images/IMG_7593.PNG" height="700">
+<img src="/images/IMG_7597.PNG" height="700">
 
 ### Organization Leader Functionality
-![alt text](/images/image1.PNG)
-![alt text](/images/image1%20(1).png)
-![alt text](/images/image1%20(2).png)
+<img src="/images/image1.PNG" height="700">
+<img src="/images/image1%20(1).png" height="700">
+<img src="/images/image1%20(2).png" height="700">
 
 
