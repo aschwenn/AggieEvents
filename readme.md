@@ -5,6 +5,7 @@ The app was created in React Native, so it works on both iOS and Android devices
 
 #### Homescreen - the user's feed of events hosted by clubs that they're subscribed to
 ![alt text](/images/IMG_7590.PNG){:height="50%" width="50%"}
+<img src="/images/IMG_7590.PNG" height="200">
 
 #### Events
 ![alt text](/images/IMG_7591.PNG)
