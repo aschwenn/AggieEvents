@@ -7,18 +7,12 @@ The app was created in React Native, so it works on both iOS and Android devices
 <img src="/images/IMG_7590.PNG" height="700">
 
 #### Events
-<img src="/images/IMG_7591.PNG" height="700">
-<img src="/images/IMG_7596.PNG" height="700">
-<img src="/images/IMG_7595.PNG" height="700">
+<img src="/images/IMG_7591.PNG" height="500"><img src="/images/IMG_7596.PNG" height="500"><img src="/images/IMG_7595.PNG" height="500">
 
 ### Organizations
-<img src="/images/IMG_7592.PNG" height="700">
-<img src="/images/IMG_7593.PNG" height="700">
-<img src="/images/IMG_7597.PNG" height="700">
+<img src="/images/IMG_7592.PNG" height="500"><img src="/images/IMG_7593.PNG" height="500"><img src="/images/IMG_7597.PNG" height="500">
 
 ### Organization Leader Functionality
-<img src="/images/image1.PNG" height="700">
-<img src="/images/image1%20(1).png" height="700">
-<img src="/images/image1%20(2).png" height="700">
+<img src="/images/image1.PNG" height="500"><img src="/images/image1%20(1).png" height="500"><img src="/images/image1%20(2).png" height="500">
 
 
